@@ -1,0 +1,152 @@
+:root {
+  /* Eight branches color variables */
+  --color-sandbeige: #EFE9DD;
+  --color-lightestbeige: #FAF8F2;
+  --color-beige: #F5F1E5;
+  --color-brown: #CDB598;
+  --color-salmon: #E0BBA5;
+  --color-lightestgreen: #C3E0AB;
+  --color-lightgreen: #82AF82;
+  --color-darkgreen: #316C5F;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #3d3d3d;
+  --color-charcoal: #3D3841;
+  --color-orange: #D33A21;
+  --color-lightorange: #D27241;
+  --hover-transition: all ease-in-out 0.15s;
+  --hover-transition-slow: all ease-in-out 0.25s;
+
+  --footer-height: 550px;
+}
+
+@font-face {
+  font-family: "Reckless-book";
+  src: url(../../fonts/recklessneue-book.woff2) format("woff2");
+  font-display: fallback;
+} 
+
+@font-face {
+  font-family: "Reckless-light";
+  src: url(../../fonts/recklessneue-light.woff2) format("woff2");
+  font-display: fallback;
+} 
+
+@font-face {
+  font-family: "Matter-regular";
+  src: url(../../fonts/matter-regular.woff2) format("woff2");
+  font-display: fallback;
+} 
+
+@font-face {
+  font-family: "Matter-light";
+  src: url(../../fonts/matter-light.woff2) format("woff2");
+  font-display: fallback;
+} 
+
+
+/* HTML elements */
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-beige);
+  margin: 0;
+  overscroll-behavior: none;
+}
+/* Heading */
+
+/* html {
+  overflow-y: scroll;
+} */
+
+/* See layout.js for font @media breakpoints */
+
+h1 {
+  font-family: "Reckless-light";
+  font-size: 68px;
+  line-height: 85px;
+}
+
+h2 {
+  font-family: "Matter-light";
+  font-size: 45px;
+  line-height: 58px;
+}
+
+h3 {
+  font-family: "Reckless-book";
+  font-size: 38px;
+  line-height: 48px;
+}
+
+h4 {
+  font-family: "Matter-light";
+  font-size: 33px;
+  line-height: 120%;
+}
+
+h5 {
+  font-family: "Matter-light";
+  font-size: 24px;
+  line-height: 37px;
+}
+
+h6 {
+  font-family: "Matter-light";
+  font-size: 22px;
+  line-height: 32px;
+}
+
+p, ul, li {
+  font-family: "Matter-regular";
+  font-size: 24px;
+  line-height: 35px;
+}
+
+/* a {
+  font-family: "Matter-regular";
+  font-size: 18px;
+} */
+
+h1 > a
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6, 
+p,
+a {
+  font-feature-settings: "calt" 0;
+  font-weight: 300;
+  margin: 0;
+}
+
+p {
+  font-family: "Matter-regular";
+}
+blockquote > ul,
+blockquote > ol {
+  list-style-position: inside;
+}
+
+
+/* Link */
+a:hover,
+a:focus {
+  text-decoration: none;
+}
