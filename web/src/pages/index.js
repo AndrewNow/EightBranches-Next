@@ -316,9 +316,6 @@ const HomePage = ({ eventData }) => {
               Ancient Wisdom, <br />
               Modern Practice
             </motion.h1>
-            <h1>
-              TEST AGAIN
-            </h1>
             <motion.p variants={fadeIn}>
               Eight Branches offers students a holistic and industry-leading
               education, firmly rooted in Traditional Chinese Medicine (TCM).
