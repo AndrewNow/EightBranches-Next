@@ -171,12 +171,12 @@ const Form = ({ landingPageType }) => {
           animate="visible"
           exit="exit"
         >
-          Success! Thank you for your interest. <br /> We'll get back to you
-          shortly.
+          Success! Thank you for your interest. <br /> We&apos;ll get back to
+          you shortly.
         </Success>
       )}
     </ComponentWrapper>
-  )
+  );
 }
 
 export default Form

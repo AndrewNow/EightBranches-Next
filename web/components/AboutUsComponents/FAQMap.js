@@ -27,7 +27,7 @@ const FAQMap = () => {
   ]
 
   return FAQData.map((item, index) => (
-    <Faq question={item.question} answer={item.answer} index={index} />
+    <Faq question={item.question} answer={item.answer} index={index} key={index} />
   ))
 }
 

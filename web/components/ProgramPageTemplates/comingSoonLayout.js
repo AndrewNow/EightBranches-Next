@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
 const ComingSoonLayout = () => {
   return (
     <>
-      <LandingSection>
+      {/* <LandingSection>
         <LeftSection ref={HideImageRef}>
           <HideImage
             animate={HideImageInView ? "hidden" : "visible"}
@@ -24,9 +24,9 @@ const ComingSoonLayout = () => {
             <motion.h4 variants={FadeIn}>{programData.programType}</motion.h4>
           </LandingTextWrapper>
         </RightSection>
-      </LandingSection>
+      </LandingSection> */}
     </>
-  )
-}
+  );
+};
 
-export default ComingSoonLayout
+export default ComingSoonLayout;
