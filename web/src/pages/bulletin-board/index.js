@@ -97,6 +97,7 @@ const News = ({ eventData, blogData }) => {
                   >
                     <Image
                       src={blogData.imageUrl}
+                      alt={blogData.title}
                       placeholder="blur"
                       blurDataURL={blogData.lqip}
                       quality={90}
