@@ -107,7 +107,7 @@ const Event = ({ eventData }) => {
                 </Link>
                 <BulletinDescription>
                   <p>{eventData.prev.readtime} minute read</p>
-                  <p>{prevFormattedDate}</p>
+                  {prevFormattedDate && <p>{prevFormattedDate}</p>}
                 </BulletinDescription>
               </BulletinPost>
             )}
@@ -130,7 +130,7 @@ const Event = ({ eventData }) => {
                 </Link>
                 <BulletinDescription>
                   <p>{eventData.next.readtime} minute read</p>
-                  <p>{nextFormattedDate}</p>
+                  {nextFormattedDate && <p>{nextFormattedDate}</p>}
                 </BulletinDescription>
               </BulletinPost>
             )}
