@@ -372,7 +372,9 @@ const HomePage = ({ eventData }) => {
             Eastern medicine.
           </p>
           <ProgramsLink href="/programs">
-            <p>View All Programs</p> <Arrow color="var(--color-darkgreen)" />
+            <a>
+              <p>View All Programs</p> <Arrow color="var(--color-darkgreen)" />
+            </a>
           </ProgramsLink>
         </DiplomaHeader>
         {DiplomaData.map((diploma, index) => (
@@ -468,7 +470,9 @@ const HomePage = ({ eventData }) => {
               href="/bulletin-board"
               aria-label="Link to Bulletin Board page"
             >
-              <p>Visit Bulletin Board</p> <Arrow />
+              <a>
+                <p>Visit Bulletin Board</p> <Arrow />
+              </a>
             </BulletinBoardLink>
           </EventsHeader>
           <EventWrapper>
