@@ -86,9 +86,9 @@ const Event = ({ eventData }) => {
           </Article>
         </SectionWrapper>
         <ContinueReading>
-          {eventData.next || (eventData.prev && <h1>More Posts</h1>)}
+          {(eventData.next || eventData.prev) && <h1>More Posts</h1>}
           <ContinueReadingPostWrapper>
-            {eventData.prev && (
+            {eventData.prev !== null && (
               <BulletinPost key={eventData.prev._id}>
                 <h6>
                   <Link href={`/bulletin-board/${eventData.prev.slug}`}>
@@ -111,7 +111,7 @@ const Event = ({ eventData }) => {
                 </BulletinDescription>
               </BulletinPost>
             )}
-            {eventData.next && (
+            {eventData.next !== null && (
               <BulletinPost key={eventData.next._id}>
                 <h6>
                   <Link href={`/bulletin-board/${eventData.next.slug}`}>
