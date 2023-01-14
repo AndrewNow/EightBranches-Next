@@ -16,7 +16,28 @@ const Event = ({ eventData }) => {
     .utc(isoString)
     .tz("America/Toronto")
     .format("dddd, MMMM Do (h:mm A z)");
-  console.log(eventData);
+
+  let prevIsoString;
+  let prevFormattedDate;
+
+  if (eventData.prev) {
+    prevIsoString = eventData.prev.date;
+    prevFormattedDate = moment
+      .utc(prevIsoString)
+      .tz("America/Toronto")
+      .format("DD.MM.YYYY");
+  }
+  let nextIsoString;
+  let nextFormattedDate;
+
+  if (eventData.next) {
+    nextIsoString = eventData.next.date;
+    nextFormattedDate = moment
+      .utc(nextIsoString)
+      .tz("America/Toronto")
+      .format("DD.MM.YYYY");
+  }
+
   return (
     <Layout>
       <BgColor>
