@@ -184,7 +184,7 @@ export async function getStaticPaths() {
   // Map the 'slug' values to an object with the 'params' key
   return {
     paths: slugs.map((events) => ({ params: { events } })),
-    fallback: false,
+    fallback: true,
   };
 }
 
