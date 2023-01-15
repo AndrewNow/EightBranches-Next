@@ -105,7 +105,7 @@ const Blog = ({ blogData }) => {
                       blurDataURL={blogData.prev.lqip}
                       width={546}
                       height={312}
-                      style={{ objectFit: "cover" }}
+                      className="image-cover"
                     />
                   </a>
                 </Link>
@@ -135,7 +135,7 @@ const Blog = ({ blogData }) => {
                       blurDataURL={blogData.next.lqip}
                       width={546}
                       height={312}
-                      style={{ objectFit: "cover" }}
+                      className="image-cover"
                     />
                   </a>
                 </Link>
@@ -694,6 +694,9 @@ const ContinueReadingPostWrapper = styled.div`
   justify-content: center;
   list-style: none;
   padding-bottom: 10rem;
+  .image-cover {
+    object-fit: cover;
+  }
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 95%;

@@ -124,7 +124,7 @@ const Event = ({ eventData }) => {
                       blurDataURL={eventData.prev.lqip}
                       width={546}
                       height={312}
-                      style={{ objectFit: "cover" }}
+                      className="image-cover"
                     />
                   </a>
                 </Link>
@@ -153,7 +153,7 @@ const Event = ({ eventData }) => {
                       blurDataURL={eventData.next.lqip}
                       width={546}
                       height={312}
-                      style={{ objectFit: "cover" }}
+                      className="image-cover"
                     />
                   </a>
                 </Link>
@@ -744,6 +744,10 @@ const ContinueReadingPostWrapper = styled.div`
   justify-content: center;
   list-style: none;
   padding-bottom: 10rem;
+
+  .image-cover {
+    object-fit: cover;
+  }
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 95%;
