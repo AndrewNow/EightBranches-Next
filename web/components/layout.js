@@ -3,34 +3,34 @@ import styled from "styled-components"
 import Navbar from "../components/navbar.js"
 import Footer from "../components/footer.js"
 import breakpoints from "./breakpoints"
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
 // import { Script } from "gatsby"
 
 const Layout = ({ children }) => {
-  const PageTransition = {
-    initial: {
-      opacity: 0,
-      transition: {
-        duration: 0.35,
-        transition: "easeOut",
-      },
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        duration: 0.35,
-        transition: "easeOut",
-      },
-    },
-  }
+  // const PageTransition = {
+  //   initial: {
+  //     opacity: 0,
+  //     transition: {
+  //       duration: 0.35,
+  //       transition: "easeOut",
+  //     },
+  //   },
+  //   animate: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.35,
+  //       transition: "easeOut",
+  //     },
+  //   },
+  // }
 
   return (
     <>
       <GlobalWrapper
-        variants={PageTransition}
-        initial="initial"
-        animate="animate"
-        exit="initial"
+        // variants={PageTransition}
+        // initial="initial"
+        // animate="animate"
+        // exit="initial"
       >
         <Navbar />
         <Main>{children}</Main>
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
   )
 }
 
-const GlobalWrapper = styled(motion.div)`
+const GlobalWrapper = styled.div`
   margin: 0 auto;
   padding-bottom: var(--footer-height);
 

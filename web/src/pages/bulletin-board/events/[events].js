@@ -1,7 +1,6 @@
 import { client } from "lib/sanity/client";
 import { eventPageQuery } from "lib/sanity/eventsQuery";
 import groq from "groq";
-import Layout from "components/layout";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
 import Link from "next/link";
@@ -55,7 +54,7 @@ const Event = ({ eventData }) => {
   }
 
   return (
-    <Layout>
+    <>
       <BgColor>
         <SectionWrapper>
           <Article itemScope itemType="http://schema.org/Article">
@@ -186,7 +185,7 @@ const Event = ({ eventData }) => {
           </ReturnBack>
         </ContinueReading>
       </BgColor>
-    </Layout>
+    </>
   );
 };
 

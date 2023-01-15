@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
 import Link from "next/link";
-import Layout from "components/layout";
 // import { StaticImage } from "gatsby-plugin-image";
 // import Seo from "../components/seo";
 // import Seo from "components/seo";
@@ -265,7 +264,7 @@ const HomePage = ({ eventData }) => {
   };
 
   return (
-    <Layout>
+    <>
       {/* <Seo
         title="College of Eastern Medicine"
         keywords={[
@@ -526,7 +525,7 @@ const HomePage = ({ eventData }) => {
         </UpcomingEvents>
       ) : null}
       <AcademicAdvisor />
-    </Layout>
+    </>
   );
 };
 

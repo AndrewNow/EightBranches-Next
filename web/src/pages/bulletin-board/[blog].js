@@ -1,7 +1,6 @@
 import { client } from "lib/sanity/client";
 import { blogPageQuery } from "lib/sanity/blogQuery";
 import groq from "groq";
-import Layout from "components/layout";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
 import Link from "next/link";
@@ -48,7 +47,7 @@ const Blog = ({ blogData }) => {
   }
 
   return (
-    <Layout>
+    <>
       {/* <Seo /> */}
       <BgColor>
         <SectionWrapper>
@@ -169,7 +168,7 @@ const Blog = ({ blogData }) => {
           </Link>
         </ReturnBack>
       </BgColor>
-    </Layout>
+    </>
   );
 };
 

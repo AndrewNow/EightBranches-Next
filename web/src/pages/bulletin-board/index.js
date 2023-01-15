@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
-import Layout from "components/layout";
 // import Seo from "components/seo";
 import Image from "next/image";
 import { client } from "lib/sanity/client";
@@ -22,7 +21,7 @@ const News = ({ eventData, blogData }) => {
   const handleClosePosts = () => setVisiblePosts(MORE_POSTS);
 
   return (
-    <Layout>
+    <>
       {eventData.length > 0 ? (
         <UpcomingEventsWrapper>
           <SectionWrapper>
@@ -153,7 +152,7 @@ const News = ({ eventData, blogData }) => {
           )}
         </SectionWrapper>
       </BulletinWrapper>
-    </Layout>
+    </>
   );
 };
 

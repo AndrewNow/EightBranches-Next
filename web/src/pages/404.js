@@ -1,6 +1,5 @@
 // import { graphql, Link } from "gatsby";
 import Link from "next/link";
-import Layout from "components/layout";
 // import Seo from "../components/seo";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
@@ -26,9 +25,7 @@ const NotFoundPage = () =>
     };
 
     return (
-      <Layout
-      // location={location} title={siteTitle}
-      >
+      <>
         {/* <Seo title="404: Not Found" /> */}
         <Bg>
           <TextWrapper variants={FadeIn} initial="hidden" animate="visible">
@@ -40,7 +37,7 @@ const NotFoundPage = () =>
             <ReadMore href="/">Home</ReadMore>
           </TextWrapper>
         </Bg>
-      </Layout>
+      </>
     );
   };
 
