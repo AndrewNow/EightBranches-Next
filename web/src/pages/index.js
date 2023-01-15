@@ -797,6 +797,7 @@ const AboutUsText = styled.div`
 `;
 
 const ReadMore = styled.a`
+  cursor: pointer;
   display: inline-block;
   transform: translateY(-1rem);
   margin-left: 2rem;
@@ -965,6 +966,7 @@ const BorderRadius = styled(motion.div)`
 `;
 
 const DiplomaReadMore = styled.a`
+  cursor: pointer;
   align-self: flex-start;
   display: inline-block;
   border-radius: 10px;
@@ -1160,6 +1162,7 @@ const EventsHeader = styled.header`
 `;
 
 const ProgramsLink = styled.a`
+  cursor: pointer;
   color: var(--color-darkgreen);
   text-decoration: none;
   display: flex;
@@ -1198,6 +1201,7 @@ const ProgramsLink = styled.a`
 `;
 
 const BulletinBoardLink = styled.a`
+  cursor: pointer;
   color: black;
   text-decoration: none;
   display: flex;
@@ -1339,6 +1343,7 @@ const EventTitle = styled(Link)`
 `;
 
 const SignUpLink = styled.a`
+  cursor: pointer;
   text-decoration: none;
   font-size: 18px;
   font-family: "Matter-light";

@@ -256,6 +256,7 @@ const ImageWrapper = styled.div`
 `;
 
 const EventLink = styled.a`
+  cursor: pointer;
   margin-top: 2.5rem;
   padding: 0.35rem 1.5rem;
   display: inline-flex;
@@ -768,6 +769,7 @@ const ReturnBack = styled.div`
 `;
 
 const ProgramLink = styled.a`
+  cursor: pointer;
   color: black;
   text-decoration: none;
 `;

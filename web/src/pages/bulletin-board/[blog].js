@@ -719,6 +719,7 @@ const ReturnBack = styled.div`
 `;
 
 const ProgramLink = styled.a`
+  cursor: pointer;
   color: black;
   text-decoration: none;
 `;
