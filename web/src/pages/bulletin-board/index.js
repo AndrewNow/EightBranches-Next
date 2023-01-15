@@ -21,7 +21,6 @@ const News = ({ eventData, blogData }) => {
   // When we reach the end of the array, load more posts button becomes a "close posts" button
   const handleClosePosts = () => setVisiblePosts(6);
 
-  console.log(blogData);
   return (
     <Layout>
       {eventData.length > 0 ? (
@@ -31,7 +30,6 @@ const News = ({ eventData, blogData }) => {
             <EventWrapper>
               {eventData.slice(0, 3).map((eventData) => {
                 const isoString = eventData.date;
-                console.log(isoString);
                 const formattedDate = moment
                   .utc(isoString)
                   .tz("America/Toronto")
@@ -114,6 +112,25 @@ const News = ({ eventData, blogData }) => {
               );
             })}
           </Bulletingrid>
+          {blogData.length > 6 && (
+            <>
+              {visiblePosts >= blogData.length ? (
+                // if user hits end of data.blog.edges array, button closes posts
+                <LoadMore>
+                  <EventsButton onClick={handleClosePosts}>
+                    <p>View less posts</p>
+                  </EventsButton>
+                </LoadMore>
+              ) : (
+                // Button to open more posts
+                <LoadMore>
+                  <EventsButton onClick={handleLoadNewPosts}>
+                    <p>Load more posts</p>
+                  </EventsButton>
+                </LoadMore>
+              )}
+            </>
+          )}
         </SectionWrapper>
       </BulletinWrapper>
     </Layout>
@@ -323,7 +340,7 @@ const BulletinPost = styled.article`
   margin-bottom: 5rem;
   .bulletin-image {
     aspect-ratio: 550/314;
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     max-width: 550;
     height: auto;

@@ -350,13 +350,13 @@ const HomePage = ({ eventData }) => {
               Our college empowers students to uplift communities through the
               practice of Eastern medicine, promoting restoration of health and
               prevention of illness.
-              {/* <ReadMore
+              <ReadMore
                 href="/about-us/"
                 rel="canonical"
                 aria-label="Link to About Us page"
               >
                 Learn More
-              </ReadMore> */}
+              </ReadMore>
             </h1>
           </AboutUsText>
         </AboutUsWrapper>
@@ -372,9 +372,7 @@ const HomePage = ({ eventData }) => {
             Eastern medicine.
           </p>
           <ProgramsLink href="/programs">
-            <a>
-              <p>View All Programs</p> <Arrow color="var(--color-darkgreen)" />
-            </a>
+            <p>View All Programs</p> <Arrow color="var(--color-darkgreen)" />
           </ProgramsLink>
         </DiplomaHeader>
         {DiplomaData.map((diploma, index) => (
@@ -470,9 +468,7 @@ const HomePage = ({ eventData }) => {
               href="/bulletin-board"
               aria-label="Link to Bulletin Board page"
             >
-              <a>
-                <p>Visit Bulletin Board</p> <Arrow />
-              </a>
+              <p>Visit Bulletin Board</p> <Arrow />
             </BulletinBoardLink>
           </EventsHeader>
           <EventWrapper>
