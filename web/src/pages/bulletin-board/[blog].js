@@ -623,6 +623,7 @@ const BulletinPost = styled.article`
   position: relative;
 
   h6 {
+    cursor: pointer;
     a {
       height: 70px;
       -webkit-line-clamp: 2;
