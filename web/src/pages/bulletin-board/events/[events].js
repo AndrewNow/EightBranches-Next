@@ -9,7 +9,6 @@ import moment from "moment-timezone";
 import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
-import { min } from "moment/moment";
 
 const Event = ({ eventData }) => {
   let isoString;

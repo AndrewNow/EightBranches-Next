@@ -53,12 +53,14 @@ const News = ({ eventData, blogData }) => {
                       ) : (
                         <h6>Event TBD</h6>
                       )}
-                      <SignUpLink
+                      <Link
                         href={`/bulletin-board/events/${eventData.slug.current}`}
                         itemProp="url"
+                        passHref
+                        legacyBehavior
                       >
-                        View details
-                      </SignUpLink>
+                        <SignUpLink>View details</SignUpLink>
+                      </Link>
                     </div>
                   </Event>
                 );
@@ -269,7 +271,7 @@ const EventLink = styled(Link)`
   }
 `;
 
-const SignUpLink = styled(Link)`
+const SignUpLink = styled.a`
   display: inline-flex;
   justify-content: center;
   align-items: center;
