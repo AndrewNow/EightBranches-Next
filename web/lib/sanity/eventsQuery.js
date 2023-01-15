@@ -5,10 +5,8 @@ export const eventsQuery = groq`
     _id,
     title, 
     slug,
-    link,
     date,
     host,
-    body
   }
 `;
 export const eventPageQuery = groq`

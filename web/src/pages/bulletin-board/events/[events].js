@@ -9,33 +9,50 @@ import moment from "moment-timezone";
 import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
+import { min } from "moment/moment";
 
 const Event = ({ eventData }) => {
-  const isoString = eventData.date;
-  const formattedDate = moment
-    .utc(isoString)
-    .tz("America/Toronto")
-    .format("dddd, MMMM Do (h:mm A z)");
+  let isoString;
+  let formattedDate;
+
+  if (eventData.date) {
+    isoString = eventData.date;
+    formattedDate = moment
+      .utc(isoString)
+      .tz("America/Toronto")
+      .format("dddd, MMMM Do (h:mm A z)");
+  } else {
+    formattedDate = "Date TBD";
+  }
 
   let prevIsoString;
   let prevFormattedDate;
 
   if (eventData.prev) {
-    prevIsoString = eventData.prev.date;
-    prevFormattedDate = moment
-      .utc(prevIsoString)
-      .tz("America/Toronto")
-      .format("DD.MM.YYYY");
+    if (eventData.prev.date) {
+      prevIsoString = eventData.prev.date;
+      prevFormattedDate = moment
+        .utc(prevIsoString)
+        .tz("America/Toronto")
+        .format("dddd, MMMM Do (h:mm A z)");
+    } else {
+      prevFormattedDate = "Date TBD";
+    }
   }
+
   let nextIsoString;
   let nextFormattedDate;
 
   if (eventData.next) {
-    nextIsoString = eventData.next.date;
-    nextFormattedDate = moment
-      .utc(nextIsoString)
-      .tz("America/Toronto")
-      .format("DD.MM.YYYY");
+    if (eventData.next.date) {
+      nextIsoString = eventData.next.date;
+      nextFormattedDate = moment
+        .utc(nextIsoString)
+        .tz("America/Toronto")
+        .format("dddd, MMMM Do (h:mm A z)");
+    } else {
+      nextFormattedDate = "Date TBD";
+    }
   }
 
   return (
@@ -86,27 +103,33 @@ const Event = ({ eventData }) => {
           </Article>
         </SectionWrapper>
         <ContinueReading>
-          {(eventData.next || eventData.prev) && <h1>More Posts</h1>}
+          {(eventData.next || eventData.prev) && <h1>More Events</h1>}
           <ContinueReadingPostWrapper>
             {eventData.prev !== null && (
               <BulletinPost key={eventData.prev._id}>
                 <h6>
-                  <Link href={`/bulletin-board/${eventData.prev.slug}`}>
+                  <Link href={`/bulletin-board/events/${eventData.prev.slug}`}>
                     <span itemProp="headline">{eventData.prev.title}</span>
                   </Link>
                 </h6>
-                <Link href={`/bulletin-board/${eventData.prev.slug}`}>
-                  <Image
-                    src={eventData.prev.imageUrl}
-                    alt={eventData.prev.title}
-                    placeholder="blur"
-                    blurDataURL={eventData.prev.lqip}
-                    width={546}
-                    height={312}
-                  />
+                <Link
+                  href={`/bulletin-board/events/${eventData.prev.slug}`}
+                  legacyBehavior
+                  passHref
+                >
+                  <a>
+                    <Image
+                      src={eventData.prev.imageUrl}
+                      alt={eventData.prev.title}
+                      placeholder="blur"
+                      blurDataURL={eventData.prev.lqip}
+                      width={546}
+                      height={312}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </a>
                 </Link>
                 <BulletinDescription>
-                  <p>{eventData.prev.readtime} minute read</p>
                   {prevFormattedDate && <p>{prevFormattedDate}</p>}
                 </BulletinDescription>
               </BulletinPost>
@@ -114,45 +137,53 @@ const Event = ({ eventData }) => {
             {eventData.next !== null && (
               <BulletinPost key={eventData.next._id}>
                 <h6>
-                  <Link href={`/bulletin-board/${eventData.next.slug}`}>
+                  <Link href={`/bulletin-board/events/${eventData.next.slug}`}>
                     <span itemProp="headline">{eventData.next.title}</span>
                   </Link>
                 </h6>
-                <Link href={`/bulletin-board/${eventData.next.slug}`}>
-                  <Image
-                    src={eventData.next.imageUrl}
-                    alt={eventData.next.title}
-                    placeholder="blur"
-                    blurDataURL={eventData.next.lqip}
-                    width={546}
-                    height={312}
-                  />
+                <Link
+                  href={`/bulletin-board/events/${eventData.next.slug}`}
+                  legacyBehavior
+                  passHref
+                >
+                  <a>
+                    <Image
+                      src={eventData.next.imageUrl}
+                      alt={eventData.next.title}
+                      placeholder="blur"
+                      blurDataURL={eventData.next.lqip}
+                      width={546}
+                      height={312}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </a>
                 </Link>
                 <BulletinDescription>
-                  <p>{eventData.next.readtime} minute read</p>
                   {nextFormattedDate && <p>{nextFormattedDate}</p>}
                 </BulletinDescription>
               </BulletinPost>
             )}
           </ContinueReadingPostWrapper>
           <ReturnBack>
-            <ProgramLink href="/bulletin-board">
-              <LinkWrapper>
-                <svg
-                  width="8"
-                  height="12"
-                  viewBox="0 0 8 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 1.41L3.42 6L8 10.59L6.59 12L0.590001 6L6.59 -1.23266e-07L8 1.41Z"
-                    fill="black"
-                  />
-                </svg>
-                <p>Return to Bulletin Board</p>{" "}
-              </LinkWrapper>
-            </ProgramLink>
+            <Link href="/bulletin-board" legacyBehavior passHref>
+              <ProgramLink>
+                <LinkWrapper>
+                  <svg
+                    width="8"
+                    height="12"
+                    viewBox="0 0 8 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 1.41L3.42 6L8 10.59L6.59 12L0.590001 6L6.59 -1.23266e-07L8 1.41Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <p>Return to Bulletin Board</p>{" "}
+                </LinkWrapper>
+              </ProgramLink>
+            </Link>
           </ReturnBack>
         </ContinueReading>
       </BgColor>
@@ -737,7 +768,7 @@ const ReturnBack = styled.div`
   padding-bottom: 5rem;
 `;
 
-const ProgramLink = styled(Link)`
+const ProgramLink = styled.a`
   color: black;
   text-decoration: none;
 `;

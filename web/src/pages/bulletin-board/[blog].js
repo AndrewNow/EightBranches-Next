@@ -11,31 +11,40 @@ import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
 
 const Blog = ({ blogData }) => {
-  const isoString = blogData.date;
-  const formattedDate = moment
-    .utc(isoString)
-    .tz("America/Toronto")
-    .format("DD.MM.YYYY");
+  let isoString;
+  let formattedDate;
+
+  if (blogData.date) {
+    isoString = blogData.date;
+    formattedDate = moment
+      .utc(isoString)
+      .tz("America/Toronto")
+      .format("DD.MM.YYYY");
+  }
 
   let prevIsoString;
   let prevFormattedDate;
 
   if (blogData.prev) {
-    prevIsoString = blogData.prev.date;
-    prevFormattedDate = moment
-      .utc(prevIsoString)
-      .tz("America/Toronto")
-      .format("DD.MM.YYYY");
+    if (blogData.prev.date) {
+      prevIsoString = blogData.prev.date;
+      prevFormattedDate = moment
+        .utc(prevIsoString)
+        .tz("America/Toronto")
+        .format("DD.MM.YYYY");
+    }
   }
   let nextIsoString;
   let nextFormattedDate;
 
   if (blogData.next) {
-    nextIsoString = blogData.next.date;
-    nextFormattedDate = moment
-      .utc(nextIsoString)
-      .tz("America/Toronto")
-      .format("DD.MM.YYYY");
+    if (blogData.next.date) {
+      nextIsoString = blogData.next.date;
+      nextFormattedDate = moment
+        .utc(nextIsoString)
+        .tz("America/Toronto")
+        .format("DD.MM.YYYY");
+    }
   }
 
   return (
@@ -83,15 +92,22 @@ const Blog = ({ blogData }) => {
                     <span itemProp="headline">{blogData.prev.title}</span>
                   </Link>
                 </h6>
-                <Link href={`/bulletin-board/${blogData.prev.slug}`}>
-                  <Image
-                    src={blogData.prev.imageUrl}
-                    alt={blogData.prev.title}
-                    placeholder="blur"
-                    blurDataURL={blogData.prev.lqip}
-                    width={546}
-                    height={312}
-                  />
+                <Link
+                  href={`/bulletin-board/${blogData.prev.slug}`}
+                  passHref
+                  legacyBehavior
+                >
+                  <a>
+                    <Image
+                      src={blogData.prev.imageUrl}
+                      alt={blogData.prev.title}
+                      placeholder="blur"
+                      blurDataURL={blogData.prev.lqip}
+                      width={546}
+                      height={312}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </a>
                 </Link>
                 <BulletinDescription>
                   <p>{blogData.prev.readtime} minute read</p>
@@ -106,15 +122,22 @@ const Blog = ({ blogData }) => {
                     <span itemProp="headline">{blogData.next.title}</span>
                   </Link>
                 </h6>
-                <Link href={`/bulletin-board/${blogData.next.slug}`}>
-                  <Image
-                    src={blogData.next.imageUrl}
-                    alt={blogData.next.title}
-                    placeholder="blur"
-                    blurDataURL={blogData.next.lqip}
-                    width={546}
-                    height={312}
-                  />
+                <Link
+                  href={`/bulletin-board/${blogData.next.slug}`}
+                  passHref
+                  legacyBehavior
+                >
+                  <a>
+                    <Image
+                      src={blogData.next.imageUrl}
+                      alt={blogData.next.title}
+                      placeholder="blur"
+                      blurDataURL={blogData.next.lqip}
+                      width={546}
+                      height={312}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </a>
                 </Link>
                 <BulletinDescription>
                   <p>{blogData.next.readtime} minute read</p>
@@ -125,23 +148,25 @@ const Blog = ({ blogData }) => {
           </ContinueReadingPostWrapper>
         </ContinueReading>
         <ReturnBack>
-          <ProgramLink href="/bulletin-board">
-            <LinkWrapper>
-              <svg
-                width="8"
-                height="12"
-                viewBox="0 0 8 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 1.41L3.42 6L8 10.59L6.59 12L0.590001 6L6.59 -1.23266e-07L8 1.41Z"
-                  fill="black"
-                />
-              </svg>
-              <p>Return to Bulletin Board</p>{" "}
-            </LinkWrapper>
-          </ProgramLink>
+          <Link href="/bulletin-board" passHref legacyBehavior>
+            <ProgramLink>
+              <LinkWrapper>
+                <svg
+                  width="8"
+                  height="12"
+                  viewBox="0 0 8 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 1.41L3.42 6L8 10.59L6.59 12L0.590001 6L6.59 -1.23266e-07L8 1.41Z"
+                    fill="black"
+                  />
+                </svg>
+                <p>Return to Bulletin Board</p>{" "}
+              </LinkWrapper>
+            </ProgramLink>
+          </Link>
         </ReturnBack>
       </BgColor>
     </Layout>
@@ -693,7 +718,7 @@ const ReturnBack = styled.div`
   padding-bottom: 5rem;
 `;
 
-const ProgramLink = styled(Link)`
+const ProgramLink = styled.a`
   color: black;
   text-decoration: none;
 `;

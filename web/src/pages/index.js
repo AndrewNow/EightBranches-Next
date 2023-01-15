@@ -371,9 +371,11 @@ const HomePage = ({ eventData }) => {
             part in sharing and integrating the powerful healing benefits of
             Eastern medicine.
           </p>
-          <ProgramsLink href="/programs">
-            <p>View All Programs</p> <Arrow color="var(--color-darkgreen)" />
-          </ProgramsLink>
+          <Link href="/programs" legacyBehavior passHref>
+            <ProgramsLink>
+              <p>View All Programs</p> <Arrow color="var(--color-darkgreen)" />
+            </ProgramsLink>
+          </Link>
         </DiplomaHeader>
         {DiplomaData.map((diploma, index) => (
           <DiplomaEntry key={index} ref={diploma.ref}>
@@ -464,12 +466,16 @@ const HomePage = ({ eventData }) => {
         <UpcomingEvents>
           <EventsHeader>
             <h1>Upcoming Events</h1>
-            <BulletinBoardLink
+            <Link
               href="/bulletin-board"
               aria-label="Link to Bulletin Board page"
+              passHref
+              legacyBehavior
             >
-              <p>Visit Bulletin Board</p> <Arrow />
-            </BulletinBoardLink>
+              <BulletinBoardLink>
+                <p>Visit Bulletin Board</p> <Arrow />
+              </BulletinBoardLink>
+            </Link>
           </EventsHeader>
           <EventWrapper>
             {eventData?.slice(0, 2).map((eventData) => {
@@ -1149,7 +1155,7 @@ const EventsHeader = styled.header`
   margin: 0 auto;
 `;
 
-const ProgramsLink = styled(Link)`
+const ProgramsLink = styled.a`
   color: var(--color-darkgreen);
   text-decoration: none;
   display: flex;
@@ -1187,7 +1193,7 @@ const ProgramsLink = styled(Link)`
   }
 `;
 
-const BulletinBoardLink = styled(Link)`
+const BulletinBoardLink = styled.a`
   color: black;
   text-decoration: none;
   display: flex;

@@ -11,15 +11,15 @@ import { blogQuery } from "lib/sanity/blogQuery";
 import moment from "moment-timezone";
 
 const News = ({ eventData, blogData }) => {
+  const MORE_POSTS = 6;
   // Only display 6 posts at first
-  const [visiblePosts, setVisiblePosts] = useState(6);
+  const [visiblePosts, setVisiblePosts] = useState(MORE_POSTS);
 
   // When user clicks on the load more button, load 2 more posts (see: MORE_POSTS)
-  const MORE_POSTS = 6;
   const handleLoadNewPosts = () =>
     setVisiblePosts((visiblePosts) => visiblePosts + MORE_POSTS);
   // When we reach the end of the array, load more posts button becomes a "close posts" button
-  const handleClosePosts = () => setVisiblePosts(6);
+  const handleClosePosts = () => setVisiblePosts(MORE_POSTS);
 
   return (
     <Layout>
@@ -29,11 +29,18 @@ const News = ({ eventData, blogData }) => {
             <h2>Upcoming Events</h2>
             <EventWrapper>
               {eventData.slice(0, 3).map((eventData) => {
-                const isoString = eventData.date;
-                const formattedDate = moment
-                  .utc(isoString)
-                  .tz("America/Toronto")
-                  .format("dddd, MMMM Do (h:mm A z)");
+                let isoString;
+                let formattedDate;
+
+                if (eventData.date) {
+                  isoString = eventData.date;
+                  formattedDate = moment
+                    .utc(isoString)
+                    .tz("America/Toronto")
+                    .format("dddd, MMMM Do (h:mm A z)");
+                } else {
+                  formattedDate = "Date TBD";
+                }
                 return (
                   <Event key={eventData._id}>
                     <div>
@@ -92,17 +99,21 @@ const News = ({ eventData, blogData }) => {
                   <Link
                     itemProp="url"
                     href={`/bulletin-board/${blogData.slug}`}
+                    passHref
+                    legacyBehavior
                   >
-                    <Image
-                      src={blogData.imageUrl}
-                      alt={blogData.title}
-                      placeholder="blur"
-                      blurDataURL={blogData.lqip}
-                      quality={90}
-                      width={550}
-                      height={314}
-                      className="bulletin-image"
-                    />
+                    <a>
+                      <Image
+                        src={blogData.imageUrl}
+                        alt={blogData.title}
+                        placeholder="blur"
+                        blurDataURL={blogData.lqip}
+                        quality={90}
+                        width={550}
+                        height={314}
+                        className="bulletin-image"
+                      />
+                    </a>
                   </Link>
                   <BulletinDescription>
                     <p>{blogData.readtime} minute read</p>
@@ -112,7 +123,7 @@ const News = ({ eventData, blogData }) => {
               );
             })}
           </Bulletingrid>
-          {blogData.length > 6 && (
+          {blogData.length > MORE_POSTS && (
             <>
               {visiblePosts >= blogData.length ? (
                 // if user hits end of data.blog.edges array, button closes posts
@@ -339,6 +350,7 @@ const BulletinPost = styled.article`
   /* height: 420px; */
   margin-bottom: 5rem;
   .bulletin-image {
+    transition: var(--hover-transition);
     aspect-ratio: 550/314;
     object-fit: cover;
     width: 100%;

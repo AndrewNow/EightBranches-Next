@@ -6,11 +6,9 @@ export const blogQuery = groq`
     title, 
     "slug": slug.current,
     readtime,
-    description,
     date,
     "imageUrl": image.asset->url,
     "lqip": image.asset->metadata.lqip,
-    body
   }
 `;
 
