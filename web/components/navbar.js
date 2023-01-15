@@ -114,7 +114,7 @@ const Navbar = () => {
         key="header"
       >
         <LogoWrapper>
-          <Link aria-label="Home button" href="/">
+          <Link aria-label="Home button" href="/" passHref legacyBehavior>
             <NavLogo />
           </Link>
         </LogoWrapper>
@@ -345,7 +345,6 @@ const NavMenuInner = styled(motion.div)`
     :nth-child(1) {
       /* padding-top: 15vh; */
     }
-  
   }
 
   h3 > a {
@@ -355,7 +354,7 @@ const NavMenuInner = styled(motion.div)`
     text-decoration: none;
     color: var(--color-black);
     transition: color ease-in-out 0.15s;
-    
+
     :hover {
       color: var(--color-orange) !important;
     }

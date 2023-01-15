@@ -44,9 +44,16 @@ const News = ({ eventData, blogData }) => {
                 return (
                   <Event key={eventData._id}>
                     <div>
-                      <EventLink href={eventData.slug.current} itemProp="url">
-                        <h4>{eventData.title}</h4>
-                      </EventLink>
+                      <Link
+                        href={eventData.slug.current}
+                        itemProp="url"
+                        passHref
+                        legacyBehavior
+                      >
+                        <EventLink>
+                          <h4>{eventData.title}</h4>
+                        </EventLink>
+                      </Link>
                       <h6>Hosted by: {eventData.host}</h6>
                       {formattedDate ? (
                         <h6>{formattedDate}</h6>
@@ -262,7 +269,7 @@ const Event = styled.article`
     width: 100%;
   }
 `;
-const EventLink = styled(Link)`
+const EventLink = styled.a`
   text-decoration: none;
   h4 {
     color: var(--color-white);

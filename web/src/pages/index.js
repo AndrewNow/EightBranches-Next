@@ -350,13 +350,15 @@ const HomePage = ({ eventData }) => {
               Our college empowers students to uplift communities through the
               practice of Eastern medicine, promoting restoration of health and
               prevention of illness.
-              <ReadMore
+              <Link
                 href="/about-us/"
                 rel="canonical"
                 aria-label="Link to About Us page"
+                legacyBehavior
+                passHref
               >
-                Learn More
-              </ReadMore>
+                <ReadMore>Learn More</ReadMore>
+              </Link>
             </h1>
           </AboutUsText>
         </AboutUsWrapper>
@@ -387,9 +389,9 @@ const HomePage = ({ eventData }) => {
               <motion.h1 variants={fadeInDiplomaText}>
                 {diploma.title}
               </motion.h1>
-              <DiplomaReadMore href={diploma.path}>
-                View Program
-              </DiplomaReadMore>
+              <Link href={diploma.path} passHref legacyBehavior>
+                <DiplomaReadMore>View Program</DiplomaReadMore>
+              </Link>
             </EntryText>
             <EntryImage>
               <BorderRadius
@@ -502,12 +504,14 @@ const HomePage = ({ eventData }) => {
                         {eventData.host}
                       </h6>
                     </div>
-                    <SignUpLink
+                    <Link
                       href={`/bulletin-board/events/${eventData.slug.current}`}
                       itemProp="url"
+                      legacyBehavior
+                      passHref
                     >
-                      Event Details
-                    </SignUpLink>
+                      <SignUpLink>Event Details</SignUpLink>
+                    </Link>
                   </Event>
                 )
               );
@@ -792,7 +796,7 @@ const AboutUsText = styled.div`
   }
 `;
 
-const ReadMore = styled(Link)`
+const ReadMore = styled.a`
   display: inline-block;
   transform: translateY(-1rem);
   margin-left: 2rem;
@@ -960,7 +964,7 @@ const BorderRadius = styled(motion.div)`
   }
 `;
 
-const DiplomaReadMore = styled(Link)`
+const DiplomaReadMore = styled.a`
   align-self: flex-start;
   display: inline-block;
   border-radius: 10px;
@@ -1334,7 +1338,7 @@ const EventTitle = styled(Link)`
   }
 `;
 
-const SignUpLink = styled(Link)`
+const SignUpLink = styled.a`
   text-decoration: none;
   font-size: 18px;
   font-family: "Matter-light";
