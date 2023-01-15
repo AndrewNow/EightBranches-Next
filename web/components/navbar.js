@@ -131,7 +131,7 @@ const Navbar = () => {
           />
         </IconWrapper>
       </HeaderWrapper>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {open ? (
           <NavMenu
             initial="hidden"
