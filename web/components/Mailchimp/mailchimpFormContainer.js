@@ -1,3 +1,4 @@
+'use client';
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 import MailchimpCustomForm from "./mailchimpCustomForm";
 

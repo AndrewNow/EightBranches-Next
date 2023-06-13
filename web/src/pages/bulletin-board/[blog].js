@@ -1,4 +1,4 @@
-import { client } from "lib/sanity/client";
+import client from "lib/sanity/client";
 import { blogPageQuery } from "lib/sanity/blogQuery";
 import groq from "groq";
 import styled from "styled-components";
@@ -8,6 +8,7 @@ import moment from "moment-timezone";
 import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
+import { getBlogPage } from "lib/sanity/blogQuery";
 
 const Blog = ({ blogData }) => {
   let isoString;
@@ -176,9 +177,7 @@ export default Blog;
 
 export async function getStaticProps({ params }) {
   // Use the 'blog' parameter to query for the correct blog post
-  const blogData = await client.fetch(blogPageQuery, {
-    slug: params.blog,
-  });
+  const blogData = await getBlogPage(params)
 
   return {
     props: {

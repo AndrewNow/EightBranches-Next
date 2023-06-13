@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
@@ -62,16 +63,10 @@ export const AcademicAdvisor = () => {
         <Image
           src={background}
           alt="An image of a bookshelf within our school."
-          fill
-          style={{ objectFit: "cover" }}
+          width={1113}
+          quality={90}
+          className="advisor-image"
         />
-        {/* <StaticImage
-          src="../images/Misc/background.png"
-          alt="An image of a bookshelf within our school."
-          quality={100}
-          imgStyle={{ objectFit: "cover" }}
-          style={{ height: "100%" }}
-        /> */}
       </AcademicAdvisorImage>
     </AcademicAdvisorWrapper>
   );
@@ -293,8 +288,13 @@ const AcademicAdvisorText = styled.div`
 const AcademicAdvisorImage = styled.div`
   min-height: 400px;
   width: 50%;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
+  .advisor-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 
   @media (max-width: ${breakpoints.xxl}px) {
     /* min-height: 325px; */

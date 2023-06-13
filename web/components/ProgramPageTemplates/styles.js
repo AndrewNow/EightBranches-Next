@@ -1,3 +1,4 @@
+'use client'
 import breakpoints from "../breakpoints"
 import styled from "styled-components"
 import { motion } from "framer-motion"

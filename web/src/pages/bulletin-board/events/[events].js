@@ -1,5 +1,4 @@
-import { client } from "lib/sanity/client";
-import { eventPageQuery } from "lib/sanity/eventsQuery";
+import client from "lib/sanity/client";
 import groq from "groq";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
@@ -8,6 +7,7 @@ import moment from "moment-timezone";
 import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
+import { getEventPage } from "lib/sanity/eventsQuery";
 
 const Event = ({ eventData }) => {
   let isoString;
@@ -191,9 +191,7 @@ const Event = ({ eventData }) => {
 
 export async function getStaticProps({ params }) {
   // Use the 'blog' parameter to query for the correct blog post
-  const eventData = await client.fetch(eventPageQuery, {
-    slug: params.events,
-  });
+  const eventData = await getEventPage(params)
 
   return {
     props: {

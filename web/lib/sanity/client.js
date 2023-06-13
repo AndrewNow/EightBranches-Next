@@ -1,9 +1,11 @@
-const sanityClient = require("@sanity/client");
+import {createClient} from 'next-sanity'
+// import {cache} from 'react'
 
-export const client = sanityClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_ID,
-  dataset: "production",
-  apiVersion: "2022-04-27",
-  //   token: 'sanity-auth-token', // or leave commented out to be anonymous user
-  useCdn: false, // `false` if you want to ensure fresh data
-});
+const client = createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_ID, 
+    dataset: "production",
+    apiVersion: "2023-06-12", 
+    useCdn: true, // if you're using ISR or only static generation at build time then you can set this to `false` to guarantee no stale content
+})
+
+export default client

@@ -1,16 +1,23 @@
-import groq from "groq";
+import { groq } from 'next-sanity'
+import client from "./client";
 
-export const eventsQuery = groq`
-  *[_type == "upcomingevents"] | order(category desc) {
-    _id,
-    title, 
-    slug,
-    date,
-    host,
-  }
-`;
-export const eventPageQuery = groq`
-  *[_type == "upcomingevents" && slug.current == $slug][0] {
+export const getEventsData = async () => {
+  const eventData = await client.fetch(
+    groq`*[_type == "upcomingevents"] | order(category desc) {
+      _id,
+      title, 
+      slug,
+      date,
+      host,
+    }`
+  )
+  return eventData
+}
+
+export const getEventPage = async (params) => {
+  const eventData = await client.fetch(
+    groq`
+      *[_type == "upcomingevents" && slug.current == $slug][0] {
     _id,
     title, 
     "slug": slug.current,
@@ -37,4 +44,7 @@ export const eventPageQuery = groq`
       "lqip": image.asset->metadata.lqip,
     }
   }
-`;
+    `, {slug: params.events,}
+    )
+  return eventData
+} 

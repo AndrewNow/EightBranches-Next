@@ -5,8 +5,8 @@ import breakpoints from "components/breakpoints";
 // import Seo from "components/seo";
 import Image from "next/image";
 import { client } from "lib/sanity/client";
-import { eventsQuery } from "lib/sanity/eventsQuery";
-import { blogQuery } from "lib/sanity/blogQuery";
+import { getEventsData } from "lib/sanity/eventsQuery";
+import { getBlogData } from "lib/sanity/blogQuery";
 import moment from "moment-timezone";
 
 const News = ({ eventData, blogData }) => {
@@ -157,8 +157,8 @@ const News = ({ eventData, blogData }) => {
 };
 
 export async function getStaticProps() {
-  const eventData = await client.fetch(eventsQuery);
-  const blogData = await client.fetch(blogQuery);
+  const eventData = await getEventsData()
+  const blogData = await getBlogData();
   return {
     props: {
       eventData,

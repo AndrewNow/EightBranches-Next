@@ -1,6 +1,9 @@
-import groq from "groq";
+import { groq } from 'next-sanity'
+import client from './client';
 
-export const blogQuery = groq`
+export const getBlogData = async () => {
+  const blogData = await client.fetch(
+    groq`
   *[_type == "blog"] | order(date desc) {
     _id,
     title, 
@@ -10,36 +13,43 @@ export const blogQuery = groq`
     "imageUrl": image.asset->url,
     "lqip": image.asset->metadata.lqip,
   }
-`;
+`)
+  return blogData
+}
 
-export const blogPageQuery = groq`
-  *[_type == "blog" && slug.current == $slug][0] {
-    _id,
-    title, 
-    "slug": slug.current,
-    readtime,
-    description,
-    date,
-    "imageUrl": image.asset->url,
-    "lqip": image.asset->metadata.lqip,
-    body,
-    "next": *[_type == "blog" && _createdAt > ^._createdAt][0]{
-      _id,
-      title,
-      "slug": slug.current,
-      readtime, 
-      date,
-      "imageUrl": image.asset->url,
-      "lqip": image.asset->metadata.lqip,
-    },
-    "prev": *[_type == "blog" && _createdAt < ^._createdAt][0]{
-      _id,
-      title,
-      "slug": slug.current,
-      readtime, 
-      date,
-      "imageUrl": image.asset->url,
-      "lqip": image.asset->metadata.lqip,
-    }
-  }
-`;
+export const getBlogPage = async (params) => {
+  const blogData = await client.fetch(
+    groq`
+      *[_type == "blog" && slug.current == $slug][0] {
+        _id,
+        title, 
+        "slug": slug.current,
+        readtime,
+        description,
+        date,
+        "imageUrl": image.asset->url,
+        "lqip": image.asset->metadata.lqip,
+        body,
+        "next": *[_type == "blog" && _createdAt > ^._createdAt][0]{
+          _id,
+          title,
+          "slug": slug.current,
+          readtime, 
+          date,
+          "imageUrl": image.asset->url,
+          "lqip": image.asset->metadata.lqip,
+        },
+        "prev": *[_type == "blog" && _createdAt < ^._createdAt][0]{
+          _id,
+          title,
+          "slug": slug.current,
+          readtime, 
+          date,
+          "imageUrl": image.asset->url,
+          "lqip": image.asset->metadata.lqip,
+        }
+      }
+    `, {slug: params.blog,}
+    )
+  return blogData
+} 

@@ -1,15 +1,14 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React from "react";
 import Link from "next/link";
-// import { StaticImage } from "gatsby-plugin-image";
-// import Seo from "../components/seo";
-// import Seo from "components/seo";
+// // import { StaticImage } from "gatsby-plugin-image";
+// // import Seo from "../components/seo";
+// // import Seo from "components/seo";
 import Image from "next/image";
 import styled from "styled-components";
 import StampLogo from "svg/stamplogo";
 import breakpoints from "components/breakpoints";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import useEmblaCarousel from "embla-carousel-react";
 import { Arrow, LeftLogoPattern } from "svg/misc";
 import { AcademicAdvisor } from "components/generalcomponents";
 import YouTubeReel from "components/Homepage/YouTubeReel";
@@ -19,15 +18,13 @@ import acupunctureImage from "../images/HomePage/acupuncture.png";
 import tcmdiplomaImage from "../images/HomePage/tcmpdiploma.png";
 import advtcmpImage from "../images/HomePage/advtcmp.png";
 import herbologyImage from "../images/HomePage/herbologydiploma.png";
-import allExams from "../images/AboutUs/Graphs/allexams.png";
-import clinicalExams from "../images/AboutUs/Graphs/clinicalexams.png";
-import writtenExams from "../images/AboutUs/Graphs/writtenexams.png";
-import tcmpExams from "../images/AboutUs/Graphs/tcmpexams.png";
-import { eventsQuery } from "lib/sanity/eventsQuery";
-import { client } from "lib/sanity/client";
+// import { eventsQuery } from "lib/sanity/eventsQuery";
 import moment from "moment-timezone";
+import { getEventsData } from "lib/sanity/eventsQuery";
+import EducationalExcellence from "components/Embla/educationalExcellence";
 
-const HomePage = ({ eventData }) => {
+export default function HomePage({eventData}) {
+  console.log(eventData)  
   const hideImage = {
     visible: {
       clipPath: "inset(100% 0% 0% 0%)",
@@ -187,81 +184,7 @@ const HomePage = ({ eventData }) => {
     },
   ];
 
-  // ---------- Initialize Embla Carousel ----------
-  const [emblaRef, embla] = useEmblaCarousel({
-    align: "center",
-  });
-
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
-
-  const onSelect = useCallback(() => {
-    if (!embla) return;
-    setPrevBtnEnabled(embla.canScrollPrev());
-    setNextBtnEnabled(embla.canScrollNext());
-  }, [embla]);
-
-  // ---------- Run configurations ----------
-  useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    embla.on("select", onSelect);
-  }, [embla, onSelect]);
-
-  // ---------- Carousel buttons ----------
-  const NextButton = ({ enabled, onClick }) => {
-    return (
-      <NextEmblaButton
-        aria-label="Next slide button"
-        onClick={onClick}
-        disabled={!enabled}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <svg
-          width="50"
-          height="50"
-          viewBox="0 0 50 50"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle r="24.5" transform="matrix(-1 0 0 1 25 25)" stroke="black" />
-          <path d="M20 14L31 25L20 36" stroke="black" />
-        </svg>
-      </NextEmblaButton>
-    );
-  };
-
-  const PrevButton = ({ enabled, onClick }) => {
-    return (
-      <PrevEmblaButton
-        aria-label="Previous slide button"
-        onClick={onClick}
-        disabled={!enabled}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <svg
-          width="50"
-          height="50"
-          viewBox="0 0 50 50"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="25"
-            cy="25"
-            r="24.5"
-            stroke="black"
-            vectorEffect="non-scaling-size"
-          />
-          <path d="M30 14L19 25L30 36" stroke="black" />
-        </svg>
-      </PrevEmblaButton>
-    );
-  };
+  
 
   return (
     <>
@@ -333,15 +256,6 @@ const HomePage = ({ eventData }) => {
               fill
               className="about-image"
             />
-            {/* <StaticImage
-              src="../images/HomePage/aboutus.png"
-              quality={90}
-              placeholder="blurred"
-              transformOptions={{ cropFocus: "bottom" }}
-              imgStyle={{ objectFit: "cover" }}
-              style={{ minHeight: "100%" }}
-              alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
-            /> */}
           </AboutUsImage>
           <AboutUsText>
             <h6>About Us</h6>
@@ -405,64 +319,7 @@ const HomePage = ({ eventData }) => {
           </DiplomaEntry>
         ))}
       </DiplomaPrograms>
-      <GraphSection>
-        <GraphTop>
-          <h1>
-            Educational <br /> Excellence
-          </h1>
-          <h6>
-            At Eight Branches, we pride ourselves on providing a comprehensive
-            education that is tailored to help our passionate students pass the
-            necessary exams and help them build a successful professional
-            practice.
-            <br />
-            <br />
-            Our students consistently outperform the Ontario average in terms of
-            pass rates on the Pan-Canadian examinations, the only objective
-            measure which is used to compare schools.
-          </h6>
-        </GraphTop>
-        <Embla>
-          <EmblaViewport ref={emblaRef}>
-            <EmblaContainer>
-              <EmblaSlide>
-                <Image
-                  src={allExams}
-                  alt="Graph depicting how Eight Branches consistently scores higher in written exam success rates compared to other Ontario colleges."
-                  quality={100}
-                  className="slide-image"
-                />
-              </EmblaSlide>
-              <EmblaSlide>
-                <Image
-                  src={clinicalExams}
-                  alt="Graph depicting how Eight Branches consistently scores higher in clinical exam success rates compared to other Ontario colleges."
-                  quality={100}
-                  className="slide-image"
-                />
-              </EmblaSlide>
-              <EmblaSlide>
-                <Image
-                  src={writtenExams}
-                  alt="Graph depicting how Eight Branches consistently scores higher in clinical exam success rates compared to other Ontario colleges."
-                  quality={100}
-                  className="slide-image"
-                />
-              </EmblaSlide>
-              <EmblaSlide>
-                <Image
-                  src={tcmpExams}
-                  alt="Graph depicting how Eight Branches consistently scores higher in clinical exam success rates compared to other Ontario colleges."
-                  quality={100}
-                  className="slide-image"
-                />
-              </EmblaSlide>
-            </EmblaContainer>
-          </EmblaViewport>
-          <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-          <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-        </Embla>
-      </GraphSection>
+          <EducationalExcellence />
       {eventData.length ? (
         <UpcomingEvents>
           <EventsHeader>
@@ -529,10 +386,8 @@ const HomePage = ({ eventData }) => {
   );
 };
 
-export default HomePage;
-
 export async function getStaticProps() {
-  const eventData = await client.fetch(eventsQuery);
+  const eventData = await getEventsData()
 
   return {
     props: {
@@ -541,38 +396,6 @@ export async function getStaticProps() {
     revalidate: 10,
   };
 }
-
-// export const pageQuery = graphql`
-//   query {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//     events: allFile(
-//       filter: {
-//         sourceInstanceName: { eq: "events" }
-//         internal: { mediaType: { eq: "text/markdown" } }
-//       }
-//       sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
-//     ) {
-//       edges {
-//         node {
-//           childrenMarkdownRemark {
-//             fields {
-//               slug
-//             }
-//             frontmatter {
-//               title
-//               host
-//               date(formatString: "dddd, MMMM Do", locale: "est")
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
 
 const LandingSection = styled.div`
   height: 100vh;
@@ -981,168 +804,6 @@ const DiplomaReadMore = styled.a`
   :hover {
     color: var(--color-white);
     background-color: var(--color-darkgreen);
-  }
-`;
-
-const GraphSection = styled.section`
-  background-color: var(--color-lightestbeige);
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-`;
-
-const GraphTop = styled.section`
-  width: 90%;
-  margin: 0 auto;
-  border-top: 1px solid #82af82;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 3rem;
-  padding-bottom: 5rem;
-
-  h1 {
-    padding-right: 3rem;
-    padding-left: 2rem;
-  }
-
-  h6 {
-    width: 55%;
-    align-self: flex-end;
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    flex-direction: column;
-    h1 {
-      padding-right: 0rem;
-      padding-left: 0;
-    }
-    h6 {
-      padding-top: 2rem;
-      align-self: flex-start;
-      width: 85%;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    padding-bottom: 2rem;
-    h6 {
-      width: 100%;
-    }
-  }
-`;
-
-const Embla = styled.div`
-  width: 80%;
-  margin: 0 auto;
-  position: relative;
-  /* padding: 5rem 0; */
-
-  @media (max-width: ${breakpoints.xl}px) {
-    width: 70%;
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    width: 95%;
-    padding: 5rem 0;
-  }
-`;
-
-const EmblaViewport = styled.div`
-  width: 100%;
-  overflow: hidden;
-`;
-
-const EmblaContainer = styled.div`
-  display: flex;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -khtml-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-`;
-
-const EmblaSlide = styled.div`
-  min-width: 100%;
-  height: 100%;
-  aspect-ratio: 980/597;
-  position: relative;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  .slide-image {
-    aspect-ratio: 980/597;
-    object-fit: contain;
-    width: 100%;
-    max-width: 980px;
-    height: auto;
-  }
-`;
-
-const NextEmblaButton = styled(motion.button)`
-  right: -5%;
-  border: none;
-  background: none;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition: opacity 0.5s ease;
-  opacity: 1;
-
-  position: absolute;
-  z-index: 1;
-  top: 37.5%;
-  /* border-radius: 100%; */
-  :disabled {
-    opacity: 0.2;
-    cursor: default;
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    right: -15%;
-  }
-
-  @media (max-width: ${breakpoints.m}px) {
-    width: 45px;
-    height: 45px;
-    top: 90%;
-    right: 25%;
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    top: 85%;
-  }
-`;
-
-const PrevEmblaButton = styled(motion.button)`
-  left: -5%;
-  border: none;
-  background: none;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition: opacity 0.5s ease;
-  opacity: 1;
-
-  position: absolute;
-  z-index: 1;
-  top: 37.5%;
-
-  :disabled {
-    opacity: 0.2;
-    cursor: default;
-  }
-
-  @media (max-width: ${breakpoints.xl}px) {
-    left: -15%;
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    width: 45px;
-    height: 45px;
-    top: 90%;
-    left: 25%;
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    top: 85%;
   }
 `;
 

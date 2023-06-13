@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
