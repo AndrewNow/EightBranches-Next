@@ -173,7 +173,7 @@ are right for you."
           >
             <h6>
               If applying as a mature student, completion of an Eight Branches
-              "Mature Student Test" and/or "Canadian Adult Achievement Test"
+              `&quot;`Mature Student Test`&quot;` and/or `&quot;`Canadian Adult Achievement Test`&quot;`
               and/or equivalent;
             </h6>
           </Requirement>
