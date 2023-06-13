@@ -293,7 +293,7 @@ export default function HomePage({eventData}) {
           </Link>
         </DiplomaHeader>
         {DiplomaData.map((diploma, index) => (
-          <DiplomaEntry key={index} ref={diploma.ref}>
+          <DiplomaEntry key={diploma.title} ref={diploma.ref}>
             <EntryText
               variants={fadeInDiplomaText}
               initial="hidden"

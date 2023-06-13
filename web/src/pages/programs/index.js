@@ -336,6 +336,7 @@ const OurPrograms = () => {
           {certificateData.map((certificate) => {
             return (
               <Card
+                key={certificate.href}
                 variants={fadeCards}
                 animate={CardInView ? "visible" : "hidden"}
                 intial="hidden"
