@@ -14,6 +14,7 @@ import { motion } from "framer-motion"
 import { getAdmissionsData } from "lib/sanity/admissionsQuery"
 import bannerImg from '../images/Admissions/admissionsbanner.png'
 import interiorImg from '../images/Admissions/bannerimage.png'
+import { getContactData } from "lib/sanity/contactInfoQuery"
   
 const Admissions = ({ admissionsData }) => {
   // const siteTitle = data.site.siteMetadata?.title || `Student Admissions`
@@ -173,7 +174,7 @@ are right for you."
           >
             <h6>
               If applying as a mature student, completion of an Eight Branches
-              `&quot;`Mature Student Test`&quot;` and/or `&quot;`Canadian Adult Achievement Test`&quot;`
+              &quot;Mature Student Test&quot; and/or &quot;Canadian Adult Achievement Test&quot;
               and/or equivalent;
             </h6>
           </Requirement>
@@ -354,10 +355,12 @@ export default Admissions
 
 export async function getStaticProps() {
   const admissionsData = await getAdmissionsData()
-
+  const contactInfo = await getContactData()
+  
   return {
     props: {
       admissionsData,
+      contactInfo
     },
     revalidate: 10,
   };

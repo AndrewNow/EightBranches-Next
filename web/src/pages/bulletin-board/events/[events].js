@@ -8,6 +8,7 @@ import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
 import { getEventPage } from "lib/sanity/eventsQuery";
+import { getContactData } from "lib/sanity/contactInfoQuery";
 
 const Event = ({ eventData }) => {
   let isoString;
@@ -192,10 +193,12 @@ const Event = ({ eventData }) => {
 export async function getStaticProps({ params }) {
   // Use the 'blog' parameter to query for the correct blog post
   const eventData = await getEventPage(params)
+  const contactInfo = await getContactData()
 
   return {
     props: {
       eventData,
+      contactInfo
     },
     revalidate: 10,
   };

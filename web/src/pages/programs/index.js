@@ -19,6 +19,8 @@ import herbology from '../../images/Programs/programs-herbology.png'
 import acuCert from '../../images/Programs/certificate-acupuncture-1.jpg'
 import bodyworkCert from '../../images/Programs/certificate-bodywork.png'
 import tcmpCert from '../../images/Programs/certificate-tcm.png'
+import { getContactData } from "lib/sanity/contactInfoQuery"
+import { GetStaticProps } from "next"
 
 const OurPrograms = () => {
   // const siteTitle = data.site.siteMetadata?.title || `Explore Our Programs`
@@ -394,6 +396,17 @@ const OurPrograms = () => {
 }
 
 export default OurPrograms
+
+export async function getStaticProps() {
+  const contactInfo = await getContactData()
+
+  return {
+    props: {
+      contactInfo,
+    },
+    revalidate: 10,
+  };
+}
 
 const SectionWrapper = styled.div`
   width: 100%;

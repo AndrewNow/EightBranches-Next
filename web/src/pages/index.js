@@ -18,10 +18,10 @@ import acupunctureImage from "../images/HomePage/acupuncture.png";
 import tcmdiplomaImage from "../images/HomePage/tcmpdiploma.png";
 import advtcmpImage from "../images/HomePage/advtcmp.png";
 import herbologyImage from "../images/HomePage/herbologydiploma.png";
-// import { eventsQuery } from "lib/sanity/eventsQuery";
 import moment from "moment-timezone";
-import { getEventsData } from "lib/sanity/eventsQuery";
 import EducationalExcellence from "components/Embla/educationalExcellence";
+import { getEventsData } from "lib/sanity/eventsQuery";
+import { getContactData } from "lib/sanity/contactInfoQuery";
 
 export default function HomePage({eventData}) {
   console.log(eventData)  
@@ -388,10 +388,12 @@ export default function HomePage({eventData}) {
 
 export async function getStaticProps() {
   const eventData = await getEventsData()
+  const contactInfo = await getContactData();
 
   return {
     props: {
       eventData,
+      contactInfo
     },
     revalidate: 10,
   };

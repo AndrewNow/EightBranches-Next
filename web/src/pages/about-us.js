@@ -18,6 +18,7 @@ import EducationalExcellence from "components/Embla/educationalExcellence"
 import { getTeachingClinicData } from "lib/sanity/teachingClinicQuery"
 
 import tcimage2 from '../images/AboutUs/tcimage2.png'
+import { getContactData } from "lib/sanity/contactInfoQuery"
 
 const AboutUs = ({ teachingClinicData }) => {
   // const siteTitle = data.site.siteMetadata?.title || `What is Eight Branches About?`
@@ -431,10 +432,12 @@ export default AboutUs
 
 export async function getStaticProps() {
   const teachingClinicData = await getTeachingClinicData()
-
+  const contactInfo = await getContactData()
+  
   return {
     props: {
       teachingClinicData,
+      contactInfo
     },
     revalidate: 10,
   };

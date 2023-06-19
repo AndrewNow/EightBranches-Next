@@ -1,21 +1,19 @@
-'use client'
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import breakpoints from "./breakpoints";
 import Link from "next/link";
-// import contactInfo from "../../site/settings/contact_info.json"
 import background from "../src/images/Misc/background.png";
 
-export const GoogleMaps = () => {
+export const GoogleMaps = ({contactInfo}) => {
   return (
     <MapWrapper>
       <MapFrame>
         <MapText>
           <h3>Visit Us</h3>
-          {/* <a href="https://g.page/EightBranches?share" target="blank">
+          <a href="https://g.page/EightBranches?share" target="blank">
             <h6>
-              {contactInfo.address.street}
+              {contactInfo.address}
             </h6>
           </a>
           <h3>Contact Us</h3>
@@ -30,7 +28,7 @@ export const GoogleMaps = () => {
             alt="Alternative toll-free phone number"
           >
             <h6>{contactInfo.phone2}</h6>
-          </a> */}
+          </a>
         </MapText>
         <Map>
           <iframe

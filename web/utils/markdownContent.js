@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 // import SanityImageComponent from "./sanityImageComponent";
 import { getImageDimensions } from "@sanity/asset-utils";
 import urlBuilder from "@sanity/image-url";
+import Image from "next/image";
 
 const ImageComponent = ({ value, isInline }) => {
   // const { width, height } = getImageDimensions(value);
@@ -14,23 +15,25 @@ const ImageComponent = ({ value, isInline }) => {
     dataset: "production",
   };
   return (
-    <img
+    <Image
       src={urlBuilder(sanityConfig)
         .image(value)
-        .width(isInline ? 100 : 800)
+        .width(isInline ? 100 : 900)
         .fit("max")
         .auto("format")
         .url()}
       alt={value.alt || " "}
-      loading="lazy"
+      // loading="lazy"
       style={{
         // Display alongside text if image appears inside a block text span
         display: isInline ? "inline-block" : "block",
-
         // Avoid jumping around with aspect-ratio CSS property
         margin: "0 auto",
         width: "90%",
       }}
+      width={900}
+      height={900}
+      className="markdown-image"
     />
   );
 };

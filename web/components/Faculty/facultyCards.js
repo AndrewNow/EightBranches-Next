@@ -1,21 +1,21 @@
-'use client'
 import React, { useState, useLayoutEffect } from "react"
 import styled from "styled-components"
-import { GatsbyImage } from "gatsby-plugin-image"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { GrClose } from "react-icons/gr"
 import breakpoints from "../breakpoints"
 import StampLogo from "../../svg/stamplogo"
+import MarkdownContent from "utils/markdownContent"
 
-export const FacultyLeadership = ({
-  title,
-  role,
-  excerpt,
-  bio,
-  email,
-  slug,
-  portraitpic,
-}) => {
+export const FacultyMember = ({data}) => {
+  
+  const title = data.title;
+  const role = data.degree;
+  const bio = data.bio;
+  const excerpt = data.excerpt;
+  const imageSrc = data.imageUrl;
+  const lqip = data.lqip;
+
   const [open, setOpen] = useState(false)
 
   //lock scroll on background when Modal is open
@@ -66,14 +66,19 @@ export const FacultyLeadership = ({
   return (
     <>
       {open && <ScrollLock />}
-      <FacultyPost key={slug} onClick={() => setOpen(!open)}>
+      <FacultyPost key={lqip} onClick={() => setOpen(!open)}>
         <PortraitThumbnail>
-          {portraitpic ? (
-            <GatsbyImage
-              image={portraitpic}
+          {imageSrc ? (
+            <Image
+              src={imageSrc}
               alt={title}
-              transformoptions={{ cropFocus: "right" }}
-              imgStyle={{ objectFit: "cover", width: "100%" }}
+              width={790}
+              height={580}
+              className="thumbnail-image"
+              placeholder="blur"
+              blurDataURL={lqip}
+              // transformoptions={{ cropFocus: "right" }}
+              // imgStyle={{ objectFit: "cover", width: "100%" }}
             />
           ) : (
             <Fallback>
@@ -85,6 +90,7 @@ export const FacultyLeadership = ({
           {role && <p style={{ color: "#625f63" }}>{role}</p>}
           <h3>{title}</h3>
           <FacultyDescription>
+            {/* <MarkdownContent blocks={bio} /> */}
             <p>{excerpt}</p>
           </FacultyDescription>
           <ReadMore>Read More</ReadMore>
@@ -115,8 +121,10 @@ export const FacultyLeadership = ({
                 exit="hidden"
               >
                 <ModalImage>
-                  {portraitpic ? (
-                    <GatsbyImage image={portraitpic} alt={title} />
+                  {imageSrc ? (
+                    <Image
+                      className="modal-image"
+                      src={imageSrc} alt={title} width={790} height={580} placeholder='blur' blurDataURL={lqip} />
                   ) : (
                     <ModalFallback>
                       <StampLogo />
@@ -126,144 +134,13 @@ export const FacultyLeadership = ({
                 <ModalText>
                   <p>{role}</p>
                   <h3>{title}</h3>
-                  <div dangerouslySetInnerHTML={{ __html: bio }} />
-                  {email && (
+                  <MarkdownContent blocks={bio} />
+                  {/* <div dangerouslySetInnerHTML={{ __html: bio }} /> */}
+                  {/* {email && (
                     <GetInTouch href={`mailto:${email}`}>
                       Get in touch
                     </GetInTouch>
-                  )}
-                </ModalText>
-              </Modal>
-            </ModalWrapper>
-          </GreyBg>
-        )}
-      </AnimatePresence>
-    </>
-  )
-}
-
-export const FacultyInstructor = ({
-  title,
-  role,
-  excerpt,
-  bio,
-  email,
-  slug,
-  portraitpic,
-}) => {
-  const [open, setOpen] = useState(false)
-
-  const useLockBodyScroll = () => {
-    useLayoutEffect(() => {
-      const originalStyle = window.getComputedStyle(document.body).overflow
-      document.body.style.overflow = "hidden"
-      return () => (document.body.style.overflow = originalStyle)
-    }, [])
-  }
-
-  const ScrollLock = () => {
-    useLockBodyScroll()
-    return <></>
-  }
-
-  const fadeIn = {
-    hidden: {
-      y: 75,
-      opacity: 0,
-      transition: {
-        duration: 0.25,
-      },
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.15,
-        duration: 0.25,
-      },
-    },
-  }
-  const greybgfadein = {
-    hidden: {
-      opacity: 0,
-      transition: {
-        duration: 0.25,
-      },
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  return (
-    <>
-      {open && <ScrollLock />}
-      <FacultyPost key={slug} onClick={() => setOpen(!open)}>
-        <PortraitThumbnail>
-          {portraitpic ? (
-            <GatsbyImage
-              image={portraitpic}
-              alt={title}
-              transformoptions={{ cropFocus: "right" }}
-              imgStyle={{ objectFit: "cover", width: "100%" }}
-            />
-          ) : (
-            <Fallback>
-              <StampLogo />
-            </Fallback>
-          )}
-        </PortraitThumbnail>
-        <TextWrapper>
-          <p style={{ color: "#625f63" }}>{role}</p>
-          <h3>{title}</h3>
-          <FacultyDescription>
-            <p>{excerpt}</p>
-          </FacultyDescription>
-          <ReadMore>Read More</ReadMore>
-        </TextWrapper>
-      </FacultyPost>
-      <AnimatePresence>
-        {open && (
-          <GreyBg
-            onClick={() => setOpen(!open)}
-            variants={greybgfadein}
-            initial="hidden"
-            animate={open ? "visible" : "hidden"}
-            exit="hidden"
-          >
-            <ModalWrapper>
-              <MobileCloseButton>
-                <p>Close</p>
-                <GrClose size={25} onClick={() => setOpen(!open)} />
-              </MobileCloseButton>
-              <Modal
-                variants={fadeIn}
-                initial="hidden"
-                animate={open ? "visible" : "hidden"}
-                exit="hidden"
-              >
-                <ModalImage>
-                  {portraitpic ? (
-                    <GatsbyImage
-                      image={portraitpic}
-                      alt={title}
-                      imgStyle={{ objectFit: "cover" }}
-                      style={{ minWidth: "100%" }}
-                    />
-                  ) : (
-                    <ModalFallback>
-                      <StampLogo />
-                    </ModalFallback>
-                  )}
-                </ModalImage>
-                <ModalText>
-                  <p>{role}</p>
-                  <h3>{title}</h3>
-                  <div dangerouslySetInnerHTML={{ __html: bio }} />
-                  <GetInTouch href={`mailto:${email}`}>Get in touch</GetInTouch>
+                  )} */}
                 </ModalText>
               </Modal>
             </ModalWrapper>
@@ -280,7 +157,7 @@ const FacultyPost = styled.article`
   position: relative;
   z-index: 5;
   overflow: hidden;
-  justify-self: center;
+  /* justify-self: center; */
   display: flex;
   flex-direction: column;
   width: auto;
@@ -308,16 +185,10 @@ const FacultyPost = styled.article`
       text-decoration: underline;
     }
   }
-  @media (max-width: ${breakpoints.xxl}px) {
-    /* height: auto; */
-  }
   @media (max-width: ${breakpoints.m}px) {
     width: auto;
     margin-bottom: 2.5rem;
   }
-  /* @media (max-width: ${breakpoints.s}px) {
-    width: auto;
-  } */
 `
 
 const TextWrapper = styled.div`
@@ -328,8 +199,15 @@ const TextWrapper = styled.div`
 
 const PortraitThumbnail = styled.div`
   position: relative;
-  :first-child {
-    max-width: 550px;
+  width: 100%;
+  height: auto;
+  display: grid;
+  place-items: center;
+  .thumbnail-image {
+    aspect-ratio: 790/580;
+    width: 100%;
+    height: auto;
+    object-fit: cover;  
   }
 `
 
@@ -339,7 +217,8 @@ const Fallback = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  aspect-ratio: 547.5/313;
+  /* aspect-ratio: 548/313; */
+  aspect-ratio: 790/580;
   width: 100%;
 `
 
@@ -378,7 +257,6 @@ const ReadMore = styled.button`
 
   @media (max-width: ${breakpoints.s}px) {
     text-decoration: underline;
-
     font-size: 16px;
   }
 `
@@ -394,7 +272,7 @@ const GreyBg = styled(motion.div)`
   top: 0;
   left: 0;
   background-color: #00000035;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
 `
 
 const ModalWrapper = styled.div`
@@ -408,14 +286,16 @@ const ModalWrapper = styled.div`
 `
 
 const Modal = styled(motion.div)`
-  position: relative;
   z-index: 99999;
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 85vw;
-  max-height: 70vh;
   padding: 1.5rem;
+  width: 85vw;
+  max-width: 1600px;
+  height: 70vh;
+  /* max-height: 70vh; */
   border-radius: 5px;
   border: 1px solid black;
   background-color: var(--color-sandbeige);
@@ -425,12 +305,14 @@ const Modal = styled(motion.div)`
     pointer-events: auto;
   }
 
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.l}px) {
     margin-bottom: 2.5rem;
     padding: 1rem;
     padding-bottom: 2.5rem;
     flex-direction: column;
     width: 93vw;
+    max-width: 750px;
+    height: 75vh;
     max-height: none;
     overflow: scroll;
   }
@@ -439,31 +321,30 @@ const Modal = styled(motion.div)`
 const ModalImage = styled.div`
   border-radius: 5px;
   align-self: center;
-  border: 1px solid black;
   position: relative;
-  max-width: 50%;
-  width: 100%;
-  img {
-    min-height: 60vh;
-    border-radius: 5px;
-    /* max-width: 50%; */
-  }
+  flex-basis: 50%;
+  height: 100%;
+  display: grid;
+  place-items: center;
 
-  @media (max-width: ${breakpoints.xl}px) {
-    max-width: 50%;
-    min-height: 90%;
+  .modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid black;
+    border-radius: 5px;
   }
-  @media (max-width: ${breakpoints.m}px) {
-    max-width: 100%;
-    img {
-      min-height: 100%;
-      max-width: 100%;
-      height: auto;
+  @media (max-width: ${breakpoints.l}px) {
+    width: 100%;
+    .modal-image {
+      max-height: 450px;
+      aspect-ratio: 790/580;
     }
   }
 `
 const ModalFallback = styled.div`
   min-height: 60vh;
+  width: 100%;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -497,7 +378,7 @@ const ModalText = styled.div`
   pointer-events: auto;
   p {
     font-family: "Matter-light";
-    padding-top: 2rem;
+    padding-top: 1rem;
     font-size: 21px;
     line-height: 150%;
   }
@@ -514,8 +395,7 @@ const ModalText = styled.div`
       font-size: 18px;
     }
   }
-  @media (max-width: ${breakpoints.m}px) {
-    /* overflow-y: visible; */
+  @media (max-width: ${breakpoints.l}px) {
     flex-basis: 100%;
     margin-top: 1rem;
     padding-left: 0;
@@ -530,20 +410,20 @@ const ModalText = styled.div`
   }
 `
 
-const GetInTouch = styled.a`
-  display: inline-block;
-  padding-top: 1rem;
-  font-size: 18px;
-  text-decoration: underline;
-  color: var(--color-orange) !important;
-  font-family: "Matter-light";
-  @media (max-width: ${breakpoints.m}px) {
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
-    margin: 0 auto;
-  }
-`
+// const GetInTouch = styled.a`
+//   display: inline-block;
+//   padding-top: 1rem;
+//   font-size: 18px;
+//   text-decoration: underline;
+//   color: var(--color-orange) !important;
+//   font-family: "Matter-light";
+//   @media (max-width: ${breakpoints.m}px) {
+//     display: flex;
+//     justify-content: center;
+//     padding-top: 2rem;
+//     margin: 0 auto;
+//   }
+// `
 
 const MobileCloseButton = styled.div`
   width: 100%;

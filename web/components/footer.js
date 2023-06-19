@@ -9,7 +9,7 @@ import MailchimpFormContainer from "./Mailchimp/mailchimpFormContainer.js"
 import breakpoints from "./breakpoints.js"
 import { motion, AnimatePresence } from "framer-motion"
 
-const Footer = () => {
+const Footer = ({contactInfo}) => {
   const [visible, setVisible] = useState(false)
 
   const footerRef = useRef()
@@ -112,7 +112,7 @@ const Footer = () => {
                 </SiteMenu>
 
                 <GetInTouch>
-{/* 
+
                   <div>
                     <a href={`mailto: ${contactInfo.email}`}>
                       {contactInfo.email}
@@ -135,9 +135,9 @@ const Footer = () => {
                     <br />
                     <br />
                     <a href="https://g.page/EightBranches?share" target="blank">
-                      {contactInfo.address.street}
+                      {contactInfo.address}
                     </a>
-                  </div> */}
+                  </div>
 
                   <br />
                   <br />

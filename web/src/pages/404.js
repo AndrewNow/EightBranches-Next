@@ -1,9 +1,10 @@
-// import { graphql, Link } from "gatsby";
 import Link from "next/link";
 // import Seo from "../components/seo";
+import { GetStaticProps } from "next";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
 import { motion } from "framer-motion";
+import { getContactData } from "lib/sanity/contactInfoQuery";
 
 const NotFoundPage = () =>
   // { data, location }
@@ -43,15 +44,16 @@ const NotFoundPage = () =>
 
 export default NotFoundPage;
 
-// export const pageQuery = graphql`
-//   query {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//   }
-// `;
+export async function getStaticProps() {
+  const contactInfo = await getContactData();
+
+  return {
+    props: {
+      contactInfo
+    },
+    revalidate: 10,
+  };
+}
 
 const Bg = styled.div`
   background-color: var(--color-lightestbeige);

@@ -9,6 +9,7 @@ import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
 import { getBlogPage } from "lib/sanity/blogQuery";
+import { getContactData } from "lib/sanity/contactInfoQuery";
 
 const Blog = ({ blogData }) => {
   let isoString;
@@ -85,59 +86,29 @@ const Blog = ({ blogData }) => {
         <ContinueReading>
           <h1>More Posts</h1>
           <ContinueReadingPostWrapper>
-            {blogData.prev && (
-              <BulletinPost key={blogData.prev._id}>
-                <h6>
-                  <Link href={`/bulletin-board/${blogData.prev.slug}`}>
-                    <span itemProp="headline">{blogData.prev.title}</span>
-                  </Link>
-                </h6>
-                <Link
-                  href={`/bulletin-board/${blogData.prev.slug}`}
-                  passHref
-                  legacyBehavior
-                >
-                  <a>
-                    <Image
-                      src={blogData.prev.imageUrl}
-                      alt={blogData.prev.title}
-                      placeholder="blur"
-                      blurDataURL={blogData.prev.lqip}
-                      width={546}
-                      height={312}
-                      className="image-cover"
-                    />
-                  </a>
-                </Link>
-                <BulletinDescription>
-                  <p>{blogData.prev.readtime} minute read</p>
-                  <p>{prevFormattedDate}</p>
-                </BulletinDescription>
-              </BulletinPost>
-            )}
             {blogData.next && (
               <BulletinPost key={blogData.next._id}>
                 <h6>
+                  <small className="moreposts-header">
+                    Previous post: <br /> 
+                  </small>
                   <Link href={`/bulletin-board/${blogData.next.slug}`}>
                     <span itemProp="headline">{blogData.next.title}</span>
                   </Link>
                 </h6>
                 <Link
                   href={`/bulletin-board/${blogData.next.slug}`}
-                  passHref
-                  legacyBehavior
                 >
-                  <a>
-                    <Image
-                      src={blogData.next.imageUrl}
-                      alt={blogData.next.title}
-                      placeholder="blur"
-                      blurDataURL={blogData.next.lqip}
-                      width={546}
-                      height={312}
-                      className="image-cover"
-                    />
-                  </a>
+                  <Image
+                    src={blogData.next.imageUrl}
+                    alt={blogData.next.title}
+                    placeholder="blur"
+                    blurDataURL={blogData.next.lqip}
+                    width={546}
+                    height={312}
+                    quality={90}
+                    className="image-cover"
+                  />
                 </Link>
                 <BulletinDescription>
                   <p>{blogData.next.readtime} minute read</p>
@@ -145,6 +116,37 @@ const Blog = ({ blogData }) => {
                 </BulletinDescription>
               </BulletinPost>
             )}
+            {blogData.prev && (
+              <BulletinPost key={blogData.prev._id}>
+                <h6>
+                  <small className="moreposts-header">
+                    Next post: <br /> 
+                  </small>
+                  <Link href={`/bulletin-board/${blogData.prev.slug}`}>
+                    <span itemProp="headline">{blogData.prev.title}</span>
+                  </Link>
+                </h6>
+                <Link
+                  href={`/bulletin-board/${blogData.prev.slug}`}
+                >
+                  <Image
+                    src={blogData.prev.imageUrl}
+                    alt={blogData.prev.title}
+                    placeholder="blur"
+                    blurDataURL={blogData.prev.lqip}
+                    width={546}
+                    height={312}
+                    quality={90}
+                    className="image-cover"
+                  />
+                </Link>
+                <BulletinDescription>
+                  <p>{blogData.prev.readtime} minute read</p>
+                  <p>{prevFormattedDate}</p>
+                </BulletinDescription>
+              </BulletinPost>
+            )}
+            
           </ContinueReadingPostWrapper>
         </ContinueReading>
         <ReturnBack>
@@ -178,10 +180,12 @@ export default Blog;
 export async function getStaticProps({ params }) {
   // Use the 'blog' parameter to query for the correct blog post
   const blogData = await getBlogPage(params)
+  const contactInfo = await getContactData()
 
   return {
     props: {
       blogData,
+      contactInfo
     },
     revalidate: 10,
   };
@@ -621,6 +625,11 @@ const BulletinPost = styled.article`
   position: relative;
 
   h6 {
+    .moreposts-header {
+      display: block;
+      color: var(--color-grey);
+      margin-bottom: .5rem;
+    }
     cursor: pointer;
     a {
       height: 70px;
@@ -641,6 +650,9 @@ const BulletinPost = styled.article`
     }
   }
 
+  @media (max-width: ${breakpoints.l}px) {
+    margin: 0 2rem;
+  }
   @media (max-width: ${breakpoints.m}px) {
     h6 {
       a {
@@ -694,21 +706,23 @@ const ContinueReadingPostWrapper = styled.div`
   list-style: none;
   padding-bottom: 10rem;
   .image-cover {
+    width: 100%;
+    height: auto;
     object-fit: cover;
   }
 
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     width: 95%;
     padding-bottom: 7rem;
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    width: 95%;
+    width: 100%;
   }
 
   @media (max-width: ${breakpoints.m}px) {
     width: 90%;
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding-bottom: 2.5rem;
   }
 `;

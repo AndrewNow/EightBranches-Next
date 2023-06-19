@@ -6,7 +6,7 @@ import breakpoints from "./breakpoints"
 // import { motion } from "framer-motion"
 // import { Script } from "gatsby"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, contactInfo }) => {
   // const PageTransition = {
   //   initial: {
   //     opacity: 0,
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
       >
         <Navbar />
         <Main>{children}</Main>
-        <Footer />
+        <Footer contactInfo={contactInfo} />
       </GlobalWrapper>
       {/* <Script
         type="text/javascript"

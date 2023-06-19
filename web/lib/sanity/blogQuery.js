@@ -22,7 +22,7 @@ export const getBlogPage = async (params) => {
     groq`
       *[_type == "blog" && slug.current == $slug][0] {
         _id,
-        title, 
+        title,
         "slug": slug.current,
         readtime,
         description,
@@ -30,20 +30,20 @@ export const getBlogPage = async (params) => {
         "imageUrl": image.asset->url,
         "lqip": image.asset->metadata.lqip,
         body,
-        "next": *[_type == "blog" && _createdAt > ^._createdAt][0]{
+        "next": *[_type == "blog" && date > ^.date] | order(date asc)[0] {
           _id,
           title,
           "slug": slug.current,
-          readtime, 
+          readtime,
           date,
           "imageUrl": image.asset->url,
           "lqip": image.asset->metadata.lqip,
         },
-        "prev": *[_type == "blog" && _createdAt < ^._createdAt][0]{
+        "prev": *[_type == "blog" && date < ^.date] | order(date desc)[0] {
           _id,
           title,
           "slug": slug.current,
-          readtime, 
+          readtime,
           date,
           "imageUrl": image.asset->url,
           "lqip": image.asset->metadata.lqip,

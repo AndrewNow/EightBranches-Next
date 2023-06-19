@@ -45,7 +45,7 @@ export default function App({
             animate="animate"
             exit="initial"
           > */}
-      <Layout>
+      <Layout contactInfo={pageProps.contactInfo}>
         <Component {...pageProps} />
       </Layout>
       {/* </m.div>

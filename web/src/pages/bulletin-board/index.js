@@ -8,6 +8,7 @@ import { client } from "lib/sanity/client";
 import { getEventsData } from "lib/sanity/eventsQuery";
 import { getBlogData } from "lib/sanity/blogQuery";
 import moment from "moment-timezone";
+import { getContactData } from "lib/sanity/contactInfoQuery";
 
 const News = ({ eventData, blogData }) => {
   const MORE_POSTS = 6;
@@ -20,6 +21,7 @@ const News = ({ eventData, blogData }) => {
   // When we reach the end of the array, load more posts button becomes a "close posts" button
   const handleClosePosts = () => setVisiblePosts(MORE_POSTS);
 
+  console.log(blogData)
   return (
     <>
       {eventData.length > 0 ? (
@@ -105,12 +107,9 @@ const News = ({ eventData, blogData }) => {
                     </Link>
                   </h6>
                   <Link
-                    itemProp="url"
                     href={`/bulletin-board/${blogData.slug}`}
-                    passHref
-                    legacyBehavior
                   >
-                    <a>
+                    {blogData.imageUrl &&
                       <Image
                         src={blogData.imageUrl}
                         alt={blogData.title}
@@ -120,8 +119,8 @@ const News = ({ eventData, blogData }) => {
                         width={550}
                         height={314}
                         className="bulletin-image"
-                      />
-                    </a>
+                        />
+                      }
                   </Link>
                   <BulletinDescription>
                     <p>{blogData.readtime} minute read</p>
@@ -157,12 +156,14 @@ const News = ({ eventData, blogData }) => {
 };
 
 export async function getStaticProps() {
-  const eventData = await getEventsData()
+  const eventData = await getEventsData();
   const blogData = await getBlogData();
+  const contactInfo = await getContactData();
   return {
     props: {
       eventData,
       blogData,
+      contactInfo,
     },
     revalidate: 10,
   };
