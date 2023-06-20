@@ -1,4 +1,3 @@
-'use client'
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { FacultyInstructor } from "./facultyCards"

@@ -1,4 +1,3 @@
-'use client';
 import React, { useState, useEffect } from "react"
 import MailchimpInputField from "./mailchimpInputField"
 import styled from "styled-components"
