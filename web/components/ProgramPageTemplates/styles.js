@@ -29,6 +29,13 @@ export const LeftSection = styled.div`
   width: 50%;
   height: 100%;
 
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
     height: 40%;

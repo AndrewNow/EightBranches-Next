@@ -13,14 +13,14 @@ export const ProgramTableDataMap = ({ programOption }) => {
       <Year>
         {programOption.year.map(yearData => {
           return (
-            <>
+            <div key={yearData.label}>
               <h1>{yearData.label}</h1>
               <ProgramData>
                 {yearData.data.map((term, index) => (
                   <ProgramYearDataMap term={term} index={index} key={index} />
                 ))}
               </ProgramData>
-            </>
+            </div>
           )
         })}
       </Year>
