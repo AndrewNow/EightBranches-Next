@@ -20,7 +20,6 @@ import acuCert from '../../images/Programs/certificate-acupuncture-1.jpg'
 import bodyworkCert from '../../images/Programs/certificate-bodywork.png'
 import tcmpCert from '../../images/Programs/certificate-tcm.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
-import { GetStaticProps } from "next"
 
 const OurPrograms = () => {
   // const siteTitle = data.site.siteMetadata?.title || `Explore Our Programs`
@@ -151,8 +150,8 @@ const OurPrograms = () => {
               }px), 0) rotate(180deg)`,
             }}
           >
-            <LeafPattern />
-          </SvgWrapper>
+          <LeafPattern />
+        </SvgWrapper>
       )
     },
     {
@@ -185,8 +184,8 @@ const OurPrograms = () => {
               }px), 0) rotate(0deg)`,
             }}
           >
-            <LeafPattern />
-          </SvgWrapper>
+          <LeafPattern />
+        </SvgWrapper>
       )
     },
   ] 
@@ -202,7 +201,7 @@ const OurPrograms = () => {
       title: `Certificate in Asian Bodywork Therapy`,
       href: false,
       image: bodyworkCert,
-      imageAlt: "A picture of a prosthetic foot with illustrated acupuncture points.",
+      imageAlt: "A picture of an instructor guiding students while illustrating bodywork points of interest on a patient.",
     },
     {
       title: `TCM Preparatory Certificate`,
@@ -248,6 +247,7 @@ const OurPrograms = () => {
             quality={100}
             width={1920}
             loading="eager"
+            priority={true}
             className="image-banner-desktop"
           />
           <Image
@@ -265,64 +265,63 @@ const OurPrograms = () => {
       <ProgramContainer>
         {programData.map((program, index) => {
           return (
-            <ProgramSection key={program.href}>
-            {program.svg && program.svg}
-            <ProgramInner index={index}>
-              <ProgramImage
-                variants={fadeIn}
-                initial="hidden"
-                animate={program.observers.inView ? "visible" : "hidden"}
-              >
-                <ImageWrapper
-                  variants={hideImage}
-                  initial="visible"
-                  animate={program.observers.inView ? "hidden" : "visible"}
-                  exit="hidden"
-                >
-                  <Image
-                    src={program.image}
-                    alt={program.imageAlt}
-                    quality={100}
-                    className="program-image"
-                    transformOptions={{ cropFocus: "center" }}
-                    imgStyle={{ objectFit: "cover" }}
-                    style={{ height: "100%" }}
-                  />
-                </ImageWrapper>
-              </ProgramImage>
-              <ProgramText
-                variants={fadeIn}
-                initial="hidden"
-                animate={program.observers.inView ? "visible" : "hidden"}
-                ref={program.observers.sectionRef}
-              >
-                <motion.h2 variants={fadeIn} dangerouslySetInnerHTML={{__html: program.title}} />
-                <motion.h6 variants={fadeIn}>
-                  {program.description}
-                </motion.h6>
-                <ProgramLink
+            <ProgramSection key={program.imageAlt}>
+              {program.svg && program.svg}
+              <ProgramInnerFlex index={index}>
+                <ProgramImage
                   variants={fadeIn}
-                  rel="canonical"
-                  href={program.href}
+                  initial="hidden"
+                  animate={program.observers.inView ? "visible" : "hidden"}
                 >
-                  <LinkWrapper variants={fadeIn}>
-                    <p>View Program</p>{" "}
-                    <svg
-                      width="8"
-                      height="12"
-                      viewBox="0 0 8 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0.590088 10.59L5.17009 6L0.590088 1.41L2.00009 0L8.00009 6L2.00009 12L0.590088 10.59Z"
-                        fill="black"
-                      />
-                    </svg>
-                  </LinkWrapper>
-                </ProgramLink>
-              </ProgramText>
-              </ProgramInner>
+                  <ImageWrapper
+                    variants={hideImage}
+                    initial="visible"
+                    animate={program.observers.inView ? "hidden" : "visible"}
+                    exit="hidden"
+                  >
+                    <Image
+                      src={program.image}
+                      alt={program.imageAlt}
+                      className="program-image"
+                      width={587}
+                      height={370}
+                      quality={100}
+                    />
+                  </ImageWrapper>
+                </ProgramImage>
+                <ProgramText
+                  variants={fadeIn}
+                  initial="hidden"
+                  animate={program.observers.inView ? "visible" : "hidden"}
+                  ref={program.observers.sectionRef}
+                >
+                  <motion.h2 variants={fadeIn} dangerouslySetInnerHTML={{__html: program.title}} />
+                  <motion.h6 variants={fadeIn}>
+                    {program.description}
+                  </motion.h6>
+                  <ProgramLink
+                    variants={fadeIn}
+                    rel="canonical"
+                    href={program.href}
+                  >
+                    <LinkWrapper variants={fadeIn}>
+                      <p>View Program</p>{" "}
+                      <svg
+                        width="8"
+                        height="12"
+                        viewBox="0 0 8 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0.590088 10.59L5.17009 6L0.590088 1.41L2.00009 0L8.00009 6L2.00009 12L0.590088 10.59Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </LinkWrapper>
+                  </ProgramLink>
+                </ProgramText>
+                </ProgramInnerFlex>
               {program.svg2 && program.svg2}
           </ProgramSection>
           )
@@ -334,11 +333,11 @@ const OurPrograms = () => {
           <StampLogo />
           <h1>Certificate Programs</h1>
         </Title>
-        <Cards ref={CardRef}>
+        <Cards ref={CardRef} >
           {certificateData.map((certificate) => {
             return (
               <Card
-                key={certificate.href}
+                key={certificate.imageAlt}
                 variants={fadeCards}
                 animate={CardInView ? "visible" : "hidden"}
                 intial="hidden"
@@ -380,7 +379,7 @@ const OurPrograms = () => {
             )
           })}
         </Cards>
-        <p class='cert-info'>
+        <p className='cert-info'>
           Certificate programs are designed for general interest or Regulated
           Health Practitioners interested in practicing TCM Modalities as an
           <strong> adjunct therapy to their primary method of treatment</strong>
@@ -584,7 +583,7 @@ const ProgramSection = styled.div`
   }
 `
 
-const ProgramInner = styled.div`
+const ProgramInnerFlex = styled.div`
   width: 90%;
   padding: 6rem 0;
   align-self: center;
@@ -602,16 +601,14 @@ const ProgramInner = styled.div`
   `}
 
   @media (max-width: ${breakpoints.xl}px) {
-    /* padding: 5rem 1rem; */
     justify-content: space-between;
   }
   @media (max-width: ${breakpoints.l}px) {
-    /* padding: 2.5rem 0; */
     width: 90%;
     margin: 0 auto;
   }
   @media (max-width: ${breakpoints.m}px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 2rem 0;
   }
 `
@@ -622,17 +619,18 @@ const ProgramImage = styled(motion.div)`
   overflow: hidden;
   margin: 0.5rem;
   height: 100%;
+  flex-basis: 35%;
   @media (max-width: ${breakpoints.xxl}px) {
     margin: 1rem;
-    max-width: 35vw;
     align-self: center;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    max-width: 40vw;
+    flex-basis: 40%;
   }
   @media (max-width: ${breakpoints.m}px) {
     margin: 2rem 0;
-    max-width: 100%;
+    flex-basis: 100%;
+    width: 100%;
   }
 `
 
@@ -779,10 +777,9 @@ const SvgWrapper = styled.div`
 
 const ImageWrapper = styled(motion.div)`
   position: relative;
-  overflow: hidden;
   .program-image {
     border-radius: 20px;
-    aspect-ratio: 450/275;
+    aspect-ratio: 587/370;
     width: 100%;
     height: auto;
     object-fit: contain;

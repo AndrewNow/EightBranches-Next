@@ -397,7 +397,7 @@ const ClickOut = styled(motion.div)`
   height: 100vh;
   z-index: 99;
   position: fixed;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(10px);
   /* background-color: #00000032; */
   top: 0;
 `;

@@ -1,38 +1,38 @@
 import "@/styles/globals.css";
-// import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import Layout from "components/layout";
 
 export default function App({
   Component,
   pageProps,
-  // router
+  router
 }) {
-  // const PageTransition = {
-  //   initial: {
-  //     opacity: 0,
-  //     transition: {
-  //       duration: 0.25,
-  //       transition: "easeOut",
-  //     },
-  //   },
-  //   animate: {
-  //     opacity: 1,
-  //     transition: {
-  //       duration: 0.25,
-  //       transition: "easeOut",
-  //     },
-  //   },
-  // };
+  const PageTransition = {
+    initial: {
+      opacity: 0,
+      transition: {
+        duration: 0.25,
+        transition: "easeOut",
+      },
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.25,
+        transition: "easeOut",
+      },
+    },
+  };
 
-  // const scrollToTop = () => {
-  //   if (typeof window !== "undefined") {
-  //     window.scrollTo(0, 0);
-  //   }
-  // };
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <>
-      {/* <LazyMotion features={domAnimation}>
+      <LazyMotion features={domAnimation}>
         <AnimatePresence
           mode="wait"
           initial={false}
@@ -44,13 +44,13 @@ export default function App({
             initial="initial"
             animate="animate"
             exit="initial"
-          > */}
+          >
       <Layout contactInfo={pageProps.contactInfo}>
         <Component {...pageProps} />
       </Layout>
-      {/* </m.div>
+      </m.div>
         </AnimatePresence>
-      </LazyMotion> */}
+      </LazyMotion>
     </>
   );
 }

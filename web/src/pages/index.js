@@ -119,12 +119,9 @@ export default function HomePage({eventData}) {
           src={acupunctureImage}
           alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
           quality={100}
-          className="diplomaImage"
+          className="diploma-image"
           width={810}
           height={500}
-          // transformOptions={{ cropFocus: "bottom" }}
-          // imgStyle={{ objectFit: "cover" }}
-          // style={{ minHeight: "100%" }}
         />
       ),
     },
@@ -138,7 +135,7 @@ export default function HomePage({eventData}) {
           src={tcmdiplomaImage}
           alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
           quality={100}
-          className="diplomaImage"
+          className="diploma-image"
           width={810}
           height={500}
         />
@@ -154,12 +151,9 @@ export default function HomePage({eventData}) {
           src={advtcmpImage}
           alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
           quality={100}
-          className="diplomaImage"
+          className="diploma-image"
           width={810}
           height={500}
-          // transformOptions={{ cropFocus: "bottom" }}
-          // imgStyle={{ objectFit: "cover" }}
-          // style={{ minHeight: "100%" }}
         />
       ),
     },
@@ -173,12 +167,9 @@ export default function HomePage({eventData}) {
           src={herbologyImage}
           alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
           quality={100}
-          className="diplomaImage"
+          className="diploma-image"
           width={810}
           height={500}
-          // transformOptions={{ cropFocus: "bottom" }}
-          // imgStyle={{ objectFit: "cover" }}
-          // style={{ minHeight: "100%" }}
         />
       ),
     },
@@ -251,9 +242,9 @@ export default function HomePage({eventData}) {
             <Image
               src={aboutUs}
               alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
-              // height={822}
-              // width={548}
-              fill
+              height={822}
+              width={548}
+              // fill
               className="about-image"
             />
           </AboutUsImage>
@@ -292,7 +283,7 @@ export default function HomePage({eventData}) {
             </ProgramsLink>
           </Link>
         </DiplomaHeader>
-        {DiplomaData.map((diploma, index) => (
+        {DiplomaData.map((diploma) => (
           <DiplomaEntry key={diploma.title} ref={diploma.ref}>
             <EntryText
               variants={fadeInDiplomaText}
@@ -569,8 +560,10 @@ const AboutUsImage = styled.div`
   height: 100%;
   aspect-ratio: 548/822;
   .about-image {
+    width: 100%;
     object-fit: cover;
     min-height: 100%;
+    max-height: 500px
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
@@ -756,7 +749,7 @@ const EntryText = styled(motion.div)`
 const EntryImage = styled.div`
   overflow: hidden;
   position: relative;
-  max-width: 50%;
+  flex-basis: 50%;
   @media (max-width: 1600px) {
     max-width: 45vw;
   }
@@ -766,13 +759,12 @@ const EntryImage = styled.div`
 `;
 
 const BorderRadius = styled(motion.div)`
-  border-radius: 30px;
-  overflow: hidden;
   position: relative;
   aspect-ratio: 810/500;
   height: auto;
   width: 100%;
-  .diplomaImage {
+  .diploma-image {
+    border-radius: 30px;
     object-fit: contain;
     aspect-ratio: 810/500;
     width: 100%;
@@ -781,11 +773,15 @@ const BorderRadius = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    border-radius: 20px;
+    .diploma-image {
+      border-radius: 20px;
+    }
   }
 
   @media (max-width: ${breakpoints.m}px) {
-    border-radius: 5px;
+    .diploma-image {
+      border-radius: 5px;
+    }
   }
 `;
 
