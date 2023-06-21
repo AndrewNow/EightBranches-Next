@@ -35,7 +35,7 @@ export default function App({
       <LazyMotion features={domAnimation}>
         <AnimatePresence
           mode="wait"
-          initial={false}
+          initial={false} // set to true to hide
           onExitComplete={scrollToTop}
         >
           <m.div

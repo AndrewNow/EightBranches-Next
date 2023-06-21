@@ -55,7 +55,7 @@ export const Faq = ({ index, question, answer }) => {
           </svg>
         </Svg>
       </Header>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {expand && (
           <Answer
             key={index}

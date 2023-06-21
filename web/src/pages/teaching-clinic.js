@@ -179,7 +179,7 @@ const TeachingClinic = ({ teachingClinicData, contactInfo }) => {
 
       <COVIDBanner onClick={() => setOpen(!open)}>
         <h6>Read COVID-19 Update</h6>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode="wait">
           {open && (
             <COVIDNews
               variants={Covid}

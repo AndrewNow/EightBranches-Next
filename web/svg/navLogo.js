@@ -46,6 +46,9 @@ const NavLogo = React.forwardRef(({ onClick, href }, ref) => (
 ));
 
 const Desktop = styled.svg`
+  aspect-ratio: 266/109;
+  width: 266px;
+  height: auto;
   @media (max-width: ${breakpoints.l}px) {
     display: none;
   }
@@ -53,6 +56,9 @@ const Desktop = styled.svg`
 const MobileTablet = styled.svg`
   display: none;
   @media (max-width: ${breakpoints.l}px) {
+    aspect-ratio: 283/106;
+    width: 283px;
+    height: auto;
     display: block;
   }
 `;

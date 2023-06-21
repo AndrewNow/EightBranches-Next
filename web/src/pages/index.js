@@ -1,8 +1,5 @@
-import React from "react";
-import Link from "next/link";
-// // import { StaticImage } from "gatsby-plugin-image";
-// // import Seo from "../components/seo";
 // // import Seo from "components/seo";
+import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import StampLogo from "svg/stamplogo";
@@ -24,7 +21,6 @@ import { getEventsData } from "lib/sanity/eventsQuery";
 import { getContactData } from "lib/sanity/contactInfoQuery";
 
 export default function HomePage({eventData}) {
-  console.log(eventData)  
   const hideImage = {
     visible: {
       clipPath: "inset(100% 0% 0% 0%)",
@@ -213,8 +209,9 @@ export default function HomePage({eventData}) {
               src={landingImage}
               alt="Soft image of a practitioner performing acupuncture on a foot."
               quality={90}
+              width={950}
+              height={970}
               className="landing-image"
-              fill
             />
           </HideImage>
         </LeftSection>
@@ -244,7 +241,6 @@ export default function HomePage({eventData}) {
               alt="Image of a practitioner lighting a fire in order to perform cupping on a patient."
               height={822}
               width={548}
-              // fill
               className="about-image"
             />
           </AboutUsImage>
@@ -259,7 +255,6 @@ export default function HomePage({eventData}) {
                 rel="canonical"
                 aria-label="Link to About Us page"
                 legacyBehavior
-                passHref
               >
                 <ReadMore>Learn More</ReadMore>
               </Link>
@@ -311,58 +306,56 @@ export default function HomePage({eventData}) {
         ))}
       </DiplomaPrograms>
           <EducationalExcellence />
-      {eventData.length ? (
-        <UpcomingEvents>
-          <EventsHeader>
-            <h1>Upcoming Events</h1>
-            <Link
-              href="/bulletin-board"
-              aria-label="Link to Bulletin Board page"
-              passHref
-              legacyBehavior
-            >
-              <BulletinBoardLink>
-                <p>Visit Bulletin Board</p> <Arrow />
-              </BulletinBoardLink>
-            </Link>
-          </EventsHeader>
-          <EventWrapper>
-            {eventData?.slice(0, 2).map((eventData) => {
-              const isoString = eventData.date;
-              const formattedDate = moment
-                .utc(isoString)
-                .tz("America/Toronto")
-                .format("dddd, MMMM Do (h:mm A z)");
-              return (
-                eventData && (
-                  <Event key={eventData._id}>
-                    <div>
-                      <EventTitle href={eventData.slug} itemProp="url">
-                        <h4 key={eventData.slug}>{eventData.title}</h4>
-                      </EventTitle>
-                      <h6>
-                        {!eventData.date || eventData.date === "Invalid date"
-                          ? " Date TBD"
-                          : " " + formattedDate}
-                        <br />
-                      </h6>
-                      <h6>
-                        <strong>Hosted by: </strong>
-                        {eventData.host}
-                      </h6>
-                    </div>
-                    <Link
-                      href={`/bulletin-board/events/${eventData.slug.current}`}
-                      itemProp="url"
-                      legacyBehavior
-                      passHref
-                    >
-                      <SignUpLink>Event Details</SignUpLink>
-                    </Link>
-                  </Event>
-                )
-              );
-            })}
+        {eventData.length ? (
+          <UpcomingEvents>
+            <EventsHeader>
+              <h1>Upcoming Events</h1>
+              <Link
+                href="/bulletin-board"
+                aria-label="Link to Bulletin Board page"
+              >
+                <BulletinBoardLink>
+                  <p>Visit Bulletin Board</p> <Arrow />
+                </BulletinBoardLink>
+              </Link>
+            </EventsHeader>
+            <EventWrapper>
+              {eventData?.slice(0, 2).map((eventData) => {
+                const isoString = eventData.date;
+                const formattedDate = moment
+                  .utc(isoString)
+                  .tz("America/Toronto")
+                  .format("dddd, MMMM Do (h:mm A z)");
+                return (
+                  eventData && (
+                    <Event key={eventData._id}>
+                      <div>
+                        <EventTitle href={eventData.slug} itemProp="url">
+                          <h4 key={eventData.slug}>{eventData.title}</h4>
+                        </EventTitle>
+                        <h6>
+                          {!eventData.date || eventData.date === "Invalid date"
+                            ? " Date TBD"
+                            : " " + formattedDate}
+                          <br />
+                        </h6>
+                        <h6>
+                          <strong>Hosted by: </strong>
+                          {eventData.host}
+                        </h6>
+                      </div>
+                      <Link
+                        href={`/bulletin-board/events/${eventData.slug.current}`}
+                        itemProp="url"
+                        legacyBehavior
+                        passHref
+                      >
+                        <SignUpLink>Event Details</SignUpLink>
+                      </Link>
+                    </Event>
+                  )
+                );
+              })}
           </EventWrapper>
           <LeftPattern>
             <LeftLogoPattern />
@@ -424,16 +417,17 @@ const LeftSection = styled.div`
 `;
 
 const HideImage = styled(motion.div)`
-  position: absolute;
+  position: relative;
   overflow: hidden;
   z-index: 2;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
+
   .landing-image {
     object-fit: cover;
     min-height: 100%;
+    height: 100%;
+    width: 100%;
   }
 `;
 
@@ -613,7 +607,7 @@ const AboutUsText = styled.div`
   }
 `;
 
-const ReadMore = styled.a`
+const ReadMore = styled.span`
   cursor: pointer;
   display: inline-block;
   transform: translateY(-1rem);
@@ -785,7 +779,7 @@ const BorderRadius = styled(motion.div)`
   }
 `;
 
-const DiplomaReadMore = styled.a`
+const DiplomaReadMore = styled.span`
   cursor: pointer;
   align-self: flex-start;
   display: inline-block;
@@ -858,7 +852,7 @@ const ProgramsLink = styled.a`
   }
 `;
 
-const BulletinBoardLink = styled.a`
+const BulletinBoardLink = styled.span`
   cursor: pointer;
   color: black;
   text-decoration: none;

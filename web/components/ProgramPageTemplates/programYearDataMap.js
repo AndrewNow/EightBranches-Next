@@ -67,7 +67,7 @@ const ProgramYearDataMap = ({ term, index }) => {
         </Svg>
       </Header>
 
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {expand && (
           <Term
             key={index}

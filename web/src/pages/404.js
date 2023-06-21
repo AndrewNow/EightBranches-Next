@@ -1,6 +1,5 @@
 import Link from "next/link";
 // import Seo from "../components/seo";
-import { GetStaticProps } from "next";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
 import { motion } from "framer-motion";

@@ -17,9 +17,8 @@ const YouTubeReel = () => {
           }}
           src="https://www.youtube.com/embed/GT2f6tnommk"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-          allowfullscreen
         ></iframe>
       </Video>
       <LeftPattern>
@@ -49,6 +48,7 @@ const Video = styled.div`
   width: 50%;
   height: auto;
   margin: 0 auto;
+  
   @media (max-width: ${breakpoints.xl}px) {
     width: 70%;
   }
