@@ -1,21 +1,26 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import styled from "styled-components"
 import Navbar from "../components/navbar.js"
 import Footer from "../components/footer.js"
 import breakpoints from "./breakpoints"
+import PageTransition from "./pageTransition.js"
 
 
-const Layout = ({ children, contactInfo }) => {
+const Layout = ({ children, contactInfo, ref }) => {
   return (
     <>
-      <GlobalWrapper>
-        <Navbar />
-        <Main>{children}</Main>
-        <Footer contactInfo={contactInfo} />
-      </GlobalWrapper>
+      <PageTransition ref={ref}>
+        <GlobalWrapper>
+          <Navbar />
+          <Main>{children}</Main>
+          <Footer contactInfo={contactInfo} />
+        </GlobalWrapper>
+      </PageTransition>
     </>
   )
 }
+
+export default forwardRef(Layout)
 
 const GlobalWrapper = styled.div`
   margin: 0 auto;
@@ -168,4 +173,3 @@ const Main = styled.main`
   }
 `
 
-export default Layout

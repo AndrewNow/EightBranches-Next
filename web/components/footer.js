@@ -78,31 +78,31 @@ const Footer = ({contactInfo}) => {
               </Newsletter>
               <MobileWrapper>
                 <SiteMenu>
-                  <Link href="/careers/">
+                  <Link scroll={false} href="/careers/">
                     <p>Careers</p>
                   </Link>
-                  <Link href="/about-us/">
+                  <Link scroll={false} href="/about-us/">
                     <p>About Us</p>
                   </Link>
-                  <Link href="/programs/">
+                  <Link scroll={false} href="/programs/">
                     <p>Programs</p>
                   </Link>
-                  <Link href="/admissions/">
+                  <Link scroll={false} href="/admissions/">
                     <p>Admissions</p>
                   </Link>
-                  <Link href="/campus/">
+                  <Link scroll={false} href="/campus/">
                     <p>Campus</p>
                   </Link>
-                  <Link href="/our-faculty/">
+                  <Link scroll={false} href="/our-faculty/">
                     <p>Meet Our Faculty</p>
                   </Link>
-                  <Link href="/teaching-clinic/">
+                  <Link scroll={false} href="/teaching-clinic/">
                     <p>Teaching Clinic</p>
                   </Link>
-                  <Link href="/bulletin-board/">
+                  <Link scroll={false} href="/bulletin-board/">
                     <p>Events</p>
                   </Link>
-                  <Link href="/alumni/">
+                  <Link scroll={false} href="/alumni/">
                     <p>Alumni</p>
                   </Link>
                   <a href="https://erealia.site/tcm/cwv/login/">

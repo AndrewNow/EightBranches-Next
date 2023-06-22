@@ -62,8 +62,9 @@ const Navbar = () => {
       transition: {
         delay: 0.1,
         duration: 0.5,
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
+        staggerChildren: 0.075,
+        delayChildren: 0.05,
+        ease: "easeInOut",
       },
     },
     hidden: {
@@ -75,6 +76,10 @@ const Navbar = () => {
   const navItem = {
     visible: {
       opacity: 1,
+      transition: {
+        duration: .65,
+        ease: "easeInOut",
+      }
     },
     hidden: {
       opacity: 0,
