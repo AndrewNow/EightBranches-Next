@@ -3,46 +3,16 @@ import styled from "styled-components"
 import Navbar from "../components/navbar.js"
 import Footer from "../components/footer.js"
 import breakpoints from "./breakpoints"
-// import { motion } from "framer-motion"
-// import { Script } from "gatsby"
+
 
 const Layout = ({ children, contactInfo }) => {
-  // const PageTransition = {
-  //   initial: {
-  //     opacity: 0,
-  //     transition: {
-  //       duration: 0.35,
-  //       transition: "easeOut",
-  //     },
-  //   },
-  //   animate: {
-  //     opacity: 1,
-  //     transition: {
-  //       duration: 0.35,
-  //       transition: "easeOut",
-  //     },
-  //   },
-  // }
-
   return (
     <>
-      <GlobalWrapper
-        // variants={PageTransition}
-        // initial="initial"
-        // animate="animate"
-        // exit="initial"
-      >
+      <GlobalWrapper>
         <Navbar />
         <Main>{children}</Main>
         <Footer contactInfo={contactInfo} />
       </GlobalWrapper>
-      {/* <Script
-        type="text/javascript"
-        id="hs-script-loader"
-        async
-        defer
-        src="//js.hs-scripts.com/22821029.js"
-      ></Script> */}
     </>
   )
 }

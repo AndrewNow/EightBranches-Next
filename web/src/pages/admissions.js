@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import styled from "styled-components"
-// import Seo from "/components/seo"
+import Seo from "/components/seo"
 import breakpoints from "/components/breakpoints"
 import StampLogo from "/svg/stamplogo"
 import { AcademicAdvisor } from "/components/generalcomponents"
@@ -17,7 +17,6 @@ import interiorImg from '../images/Admissions/bannerimage.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
   
 const Admissions = ({ admissionsData }) => {
-  // const siteTitle = data.site.siteMetadata?.title || `Student Admissions`
 
   const hideImage = {
     visible: {
@@ -91,7 +90,7 @@ const Admissions = ({ admissionsData }) => {
 
   return (
     <>
-      {/* <Seo
+      <Seo
         title="Student Admissions"
         description="Book a free call with a career advisor to see which programs at Eight Branches
 are right for you."
@@ -114,7 +113,7 @@ are right for you."
           `learn traditional chinese medicine toronto`,
           `best school for acupuncture`,
         ]}
-      /> */}
+      />
       <HeaderWrapper ref={HideImageRef}>
         <AdmissionsHeader variants={FadeIn} initial="hidden" animate="visible">
           <motion.h1 variants={FadeIn}>Study at Eight Branches</motion.h1>

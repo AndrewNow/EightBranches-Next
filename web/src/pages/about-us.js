@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-// import Seo from "/components/seo"
+import Seo from "/components/seo"
 import styled from "styled-components"
 import breakpoints from "/components/breakpoints"
 import { motion } from "framer-motion"
@@ -135,7 +135,7 @@ const AboutUs = ({ teachingClinicData }) => {
 
   return (
     <>
-      {/* <Seo
+      <Seo
         title="What is Eight Branches About?"
         description="With the highest graduate pass rates for acupuncture and herbal medicine on Pan-Canadian
 Exams, Eight Branches is the top choice for future leaders in TCM."
@@ -158,7 +158,7 @@ Exams, Eight Branches is the top choice for future leaders in TCM."
           `best ranking school acupuncture canada`,
           `affordable acupuncture toronto`,
         ]}
-      /> */}
+      />
       <AboutUsSection ref={OurStoryRef}>
         <Left>
           <HideImage

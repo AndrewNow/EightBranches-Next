@@ -1,15 +1,12 @@
 import Image from "next/image"
-// import Seo from "../../../components/seo"
+import Seo from "components/seo"
 import ProgramLayout from "components/ProgramPageTemplates/programLayout"
 import image from '../../../images/Programs/diploma-advanced-TCMP.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
 
-const AdvancedTCMP = ({ data }) => {
-  // const siteTitle =
-  //   data.site.siteMetadata?.title ||
-  //   `Advanced TCMP Program`
+const AdvancedTCMP = () => {
 
- const programData = {
+  const programData = {
     programName: "Post-Graduate Advanced TCMP",
     programType: "Diploma Program",
     about:
@@ -170,11 +167,11 @@ const AdvancedTCMP = ({ data }) => {
 
   return (
     <>
-      {/* <Seo
-        title="TCMP (Traditional Chinese Medicine Practitioner)"
-        description="Our 1 year TCMP Program is for Acupuncturists looking to add herbs to
-their practice."
-      /> */}
+      <Seo
+        title="Advanced TCMP Program"
+        description="For Practitioners looking for more knowledge in the Classics, Integrated
+Medicine and International Techniques."
+      />
       <ProgramLayout programData={programData} />
     </>
   )

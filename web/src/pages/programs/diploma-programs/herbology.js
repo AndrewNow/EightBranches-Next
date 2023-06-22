@@ -1,13 +1,10 @@
 import Image from "next/image"
-// import Seo from "../../../components/seo"
+import Seo from "components/seo"
 import ProgramLayout from "components/ProgramPageTemplates/programLayout"
 import image from '../../../images/Programs/diploma-herbology.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
 
-const Herbology = ({ data }) => {
-  // const siteTitle =
-  //   data.site.siteMetadata?.title ||
-  //   `Herbology`
+const Herbology = () => {
 
 const programData = {
     programName: "Herbology",
@@ -261,11 +258,11 @@ const programData = {
 
   return (
     <>
-      {/* <Seo
-        title="TCMP (Traditional Chinese Medicine Practitioner)"
-        description="Our 1 year TCMP Program is for Acupuncturists looking to add herbs to
-their practice."
-      /> */}
+      <Seo
+        title="Herbology Program"
+        description="This program qualifies graduates to apply for professional membership as
+a Registered Herbalist (RH) with the Ontario Herbalists Association."
+      />
       <ProgramLayout programData={programData} />
     </>
   )

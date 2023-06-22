@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-// import Seo from "../components/seo"
+import Seo from "/components/seo"
 import Image from "next/image"
 import breakpoints from "/components/breakpoints"
 import { motion, AnimatePresence } from "framer-motion"
@@ -138,7 +138,7 @@ const TeachingClinic = ({ teachingClinicData, contactInfo }) => {
 
   return (
     <>
-      {/* <Seo
+      <Seo
         title="Book a treatment with our students"
         description="Affordable Acupuncture starting at $10. Open to all members of the public."
         keywords={[
@@ -153,7 +153,7 @@ const TeachingClinic = ({ teachingClinicData, contactInfo }) => {
           `expert chinese medicine doctor`,
           `the best chinese medicine toronto`,
         ]}
-      /> */}
+      />
       <HeaderWrapper>
         <TeachingClinicHeader
           variants={FadeIn}

@@ -1,13 +1,10 @@
 import Image from "next/image"
-// import Seo from "../../../components/seo"
+import Seo from "components/seo"
 import ProgramLayout from "components/ProgramPageTemplates/programLayout"
 import image from '../../../images/Programs/diploma-acupuncture.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
 
-const AcupunctureMoxibustion = ({ data }) => {
-  // const siteTitle =
-  //   data.site.siteMetadata?.title ||
-  //   `Acupuncture & Moxibustion Diploma Program`
+const AcupunctureMoxibustion = () => {
 
   const programData = {
     programName: "Acupuncture & Moxibustion",
@@ -640,11 +637,11 @@ const AcupunctureMoxibustion = ({ data }) => {
 
   return (
     <>
-      {/* <Seo
-        title="TCMP (Traditional Chinese Medicine Practitioner)"
-        description="Our 1 year TCMP Program is for Acupuncturists looking to add herbs to
-their practice."
-      /> */}
+      <Seo
+        title="Acupuncture Diploma Program"
+        description="Our 2 year and 3 year acupuncture diploma program trains students to
+become registered acupuncturists."
+      />
       <ProgramLayout programData={programData} />
     </>
   )

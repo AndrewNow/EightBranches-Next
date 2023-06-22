@@ -1,13 +1,10 @@
 import Image from "next/image"
-// import Seo from "../../../components/seo"
+import Seo from "components/seo"
 import ProgramLayout from "components/ProgramPageTemplates/programLayout"
 import image from '../../../images/Programs/certificate-bodywork.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
 
-const TCMPreparatoryCertificate = ({ data }) => {
-  // const siteTitle =
-  //   data.site.siteMetadata?.title ||
-  //   `TCM Preparatory Certificate Program`
+const TCMPreparatoryCertificate = () => {
 
   const programData = {
     programName: "TCM Preparatory Certificate",
@@ -599,11 +596,7 @@ const TCMPreparatoryCertificate = ({ data }) => {
 
   return (
     <>
-      {/* <Seo
-        title="TCMP (Traditional Chinese Medicine Practitioner)"
-        description="Our 1 year TCMP Program is for Acupuncturists looking to add herbs to
-their practice."
-      /> */}
+      <Seo title="TCM Preparatory Certificate" />
       <ProgramLayout programData={programData} />
     </>
   )

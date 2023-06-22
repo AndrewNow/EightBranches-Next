@@ -1,14 +1,11 @@
 import Link from "next/link";
-// import Seo from "../components/seo";
+import Seo from "/components/seo";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
 import { motion } from "framer-motion";
 import { getContactData } from "lib/sanity/contactInfoQuery";
 
-const NotFoundPage = () =>
-  // { data, location }
-  {
-    // const siteTitle = data.site.siteMetadata.title;
+const NotFoundPage = () => {
 
     const FadeIn = {
       hidden: {
@@ -26,7 +23,7 @@ const NotFoundPage = () =>
 
     return (
       <>
-        {/* <Seo title="404: Not Found" /> */}
+        <Seo title="404: Page Not Found" />
         <Bg>
           <TextWrapper variants={FadeIn} initial="hidden" animate="visible">
             <h1>404</h1>

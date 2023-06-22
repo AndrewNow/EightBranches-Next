@@ -1,9 +1,8 @@
 import React, { useEffect, useCallback, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-// import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-// import Seo from "../components/seo"
+import Seo from "components/seo"
 import useEmblaCarousel from "embla-carousel-react"
 import { useRecursiveTimeout } from "/components/Embla/useRecursiveTimeout"
 import breakpoints from "/components/breakpoints"
@@ -29,7 +28,6 @@ import { getContactData } from "lib/sanity/contactInfoQuery"
 
 const Campus = ({contactInfo}) => {
   const imageData = [image1, image3, image4, image5, image6, image7, image8, image9, image12, image13]
-  // const siteTitle = data.site.siteMetadata?.title || `Campus`
 
   // ---------- INTERSECTION OBSERVER LOGIC ----------
   const [SectionRef1, sectionInView1] = useInView({
@@ -137,8 +135,8 @@ const Campus = ({contactInfo}) => {
 
   return (
     <>
-      {/* <Seo
-        title="Eight Branches Campus"
+      <Seo
+        title="Our Campus"
         description="With the largest campus (7000+ sqft) in Toronto dedicated to TCM, Eight
 Branches has medication areas, a dojo, multidisciplinary clinics, a library and
 workshop spaces."
@@ -158,7 +156,7 @@ workshop spaces."
           `local acupuncture school`,
           `local acupuncture academy`,
         ]}
-      /> */}
+      />
       <HeaderWrapper>
         <CampusHeader variants={Header} initial="hidden" animate="visible">
           <motion.h1 variants={Header}>Our Campus</motion.h1>

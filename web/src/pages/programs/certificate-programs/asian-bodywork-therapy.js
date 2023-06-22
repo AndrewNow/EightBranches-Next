@@ -1,13 +1,10 @@
 import Image from "next/image"
-// import Seo from "../../../components/seo"
+import Seo from "components/seo"
 import ProgramLayout from "components/ProgramPageTemplates/programLayout"
 import image from '../../../images/Programs/certificate-bodywork.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
 
-const AsianBodyworkTherapy = ({ data }) => {
-  // const siteTitle =
-  //   data.site.siteMetadata?.title ||
-  //   `Asian Bodywork Therapy Certificate Program`
+const AsianBodyworkTherapy = () => {
 
   const programData = {
     programName: "Asian Bodywork Therapy",
@@ -599,11 +596,7 @@ const AsianBodyworkTherapy = ({ data }) => {
 
   return (
     <>
-      {/* <Seo
-        title="TCMP (Traditional Chinese Medicine Practitioner)"
-        description="Our 1 year TCMP Program is for Acupuncturists looking to add herbs to
-their practice."
-      /> */}
+      <Seo title="Asian Bodywork Therapy" />
       <ProgramLayout programData={programData} />
     </>
   )

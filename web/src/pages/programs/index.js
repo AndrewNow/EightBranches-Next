@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import styled, {css} from "styled-components"
-// import Seo from "/components/seo"
+import Seo from "/components/seo"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "/components/breakpoints"
 import LeafPattern from "/svg/leafPattern"
@@ -213,7 +213,7 @@ const OurPrograms = () => {
 
   return (
     <>
-      {/* <Seo
+      <Seo
         title="Explore Our Programs"
         description="Explore Programs Available at Eight Branches."
         keywords={[
@@ -228,7 +228,7 @@ const OurPrograms = () => {
           `toronto acupuncture programs`,
           `toronto chinese medicine programs`,
         ]}
-      /> */}
+      />
       <SectionWrapper>
         <BannerText variants={fadeIn} initial="hidden" animate="visible">
           <motion.h1 variants={fadeIn}>

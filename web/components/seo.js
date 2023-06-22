@@ -1,105 +1,45 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Head from 'next/head';
 
-const Seo = ({ description, lang, meta, title, keywords }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            image
-            social {
-              twitter
-            }
-          }
-        }
-      }
-    `
-  )
+const SEO = ({ title, description, image, url, keywords }) => {
+  const siteName = 'Eight Branches College of Eastern Medicine';
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const seoImage = image ? image : 'https://i.imgur.com/oYDGbYr.png';
+  const seoTitle = title ? `${title} | Eight Branches` : `Eight Branches`
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:image`,
-          content: site.siteMetadata.image,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          name: `facebook-domain-verification`,
-          content: `e88hq58piyxysxvovrac152vmt8px8`,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
-    >
-    </Helmet>
-  )
-}
+    <Head>
+      <title>{seoTitle}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords.join(',')} />
+      <meta property="og:title" content={seoTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={seoImage} />
+      <meta property="og:url" content={url} />
+      <meta property="og:site_name" content={siteName} />
+      <meta name="twitter:title" content={seoTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={seoImage} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="theme-color" content="#316C5F" />
+      <link rel="canonical" href={url} />
+      <link rel="icon" href="/favicon-32x32.png" />
+      <meta charSet="UTF-8" />
+    </Head>
+  );
+};
 
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
-  description: ``,
-}
-
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
+SEO.propTypes = {
   title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   keywords: PropTypes.arrayOf(PropTypes.string),
-}
+};
 
-export default Seo
+SEO.defaultProps = {
+  keywords: [],
+};
+
+export default SEO;

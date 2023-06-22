@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import Layout from "components/layout";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 
 export default function App({
   Component,
@@ -35,8 +35,9 @@ export default function App({
       <LazyMotion features={domAnimation}>
         <AnimatePresence
           mode="wait"
-          initial={false} // set to true to hide
-          onExitComplete={scrollToTop}
+          initial={true}
+          // onExitComplete={scrollToTop}
+          onExitComplete={() => window.scrollTo(0, 0)}
         >
           <m.div
             key={router.asPath}

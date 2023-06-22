@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-// import Seo from "/components/seo"
+import Seo from "/components/seo"
 import { getContactData } from "lib/sanity/contactInfoQuery"
 // import MapAlumniData from "/components/mapAlumniData"
 import breakpoints from "/components/breakpoints"
@@ -8,10 +8,9 @@ import { getAlumniData } from "lib/sanity/alumniQuery"
 import { FacultyMember } from "components/Faculty/facultyCards"
 
 const Alumni = ({ alumniData }) => {
-  // const siteTitle = data.site.siteMetadata?.title || `Our Alumni`
   return (
     <>
-      {/* <Seo
+      <Seo
         title="Our Faculty"
         keywords={[
           `Eight Branches`,
@@ -27,7 +26,7 @@ const Alumni = ({ alumniData }) => {
           `best chinese medicine toronto`,
           `traditional chinese medicine mississauga`,
         ]}
-      /> */}
+      />
       <AlumniWrapper>
         <SectionWrapper>
           <AlumniHeader>

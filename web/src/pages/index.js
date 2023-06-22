@@ -1,4 +1,4 @@
-// // import Seo from "components/seo";
+import Seo from "components/seo";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
@@ -175,7 +175,7 @@ export default function HomePage({eventData}) {
 
   return (
     <>
-      {/* <Seo
+      <Seo
         title="College of Eastern Medicine"
         keywords={[
           `Eight Branches`,
@@ -196,7 +196,7 @@ export default function HomePage({eventData}) {
           `eastern medicine ontario`,
           `traditional chinese medicine training`,
         ]}
-      /> */}
+      />
       <LandingSection>
         <LeftSection ref={HideImageRef}>
           <HideImage
