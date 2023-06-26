@@ -132,7 +132,7 @@ become registered acupuncturists."
             animate="visible"
           >
             <StampLogo fillColor="black" />
-            <motion.h1 variants={FadeIn}>Acupuncture & Moxibustion</motion.h1>
+            <motion.h1 variants={FadeIn}>Acupuncture &#39; Moxibustion</motion.h1>
             <motion.p variants={FadeIn}>
               Program starting: <br /> January 2023
             </motion.p>
