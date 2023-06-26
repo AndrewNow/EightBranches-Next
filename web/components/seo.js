@@ -32,10 +32,6 @@ const SEO = ({ title, description, image, url, keywords }) => {
 };
 
 SEO.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
   keywords: PropTypes.arrayOf(PropTypes.string),
 };
 
