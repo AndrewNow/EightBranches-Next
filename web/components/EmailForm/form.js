@@ -72,10 +72,19 @@ const Form = ({ landingPageType }) => {
         result => {
           setSuccessfulSubmission(true)
           console.log(result.text)
+
+          // Extract form data and construct a readable message
+          const formData = new FormData(form.current);
+          let message = "Form Data:\n";
+
+          for (const [name, value] of formData) {
+            message += `${name}: ${value}\n`;
+          }
+
           event("generate_lead", {
-            category: "",
+            category: "generate_lead",
             method: "Acupuncture landing form",
-            message: `Message: ${form.current}`
+            message: message,
             
           })
         },
@@ -84,14 +93,14 @@ const Form = ({ landingPageType }) => {
           console.log(error.text)
         }
       )
-    typeof window !== "undefined" &&
-      window.gtag("event", "generate_lead", {
-        send_to: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
-        method: "Acupuncture landing form",
-        // Sends the event to Google Analytics and
-        // resubmits the form once the hit is done.
-        // event_callback: submitForm,
-      })
+    // typeof window !== "undefined" &&
+    //   window.gtag("event", "generate_lead", {
+    //     send_to: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+    //     method: "Acupuncture landing form",
+    //     // Sends the event to Google Analytics and
+    //     // resubmits the form once the hit is done.
+    //     // event_callback: submitForm,
+    //   })
     // reset form after submission
     e.target.reset()
   }
