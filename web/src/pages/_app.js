@@ -1,15 +1,17 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import Layout from "components/layout";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from 'next/router';
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 export default function App({ Component, pageProps }) {
 
   const router = useRouter()
   const pageKey = router.asPath
 
-
-    const scrollToTop = () => {
+  // page transition info:
+  // https://maxschmitt.me/posts/nextjs-page-transitions-framer-motion
+  const scrollToTop = () => {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0);
     }
@@ -20,6 +22,7 @@ export default function App({ Component, pageProps }) {
     <>
       <AnimatePresence initial={false} mode="popLayout" onExitComplete={scrollToTop}>
         <Layout contactInfo={pageProps.contactInfo} key={pageKey}>
+          <GoogleAnalytics trackPageViews />
           <Component {...pageProps} />
         </Layout>
       </AnimatePresence>

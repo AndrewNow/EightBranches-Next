@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import breakpoints from "../breakpoints"
 import NavLogo from "../../svg/navLogo"
+import { event } from "nextjs-google-analytics"
 
 const Form = ({ landingPageType }) => {
   const successMessageAnim = {
@@ -71,6 +72,12 @@ const Form = ({ landingPageType }) => {
         result => {
           setSuccessfulSubmission(true)
           console.log(result.text)
+          event("generate_lead", {
+            category: "",
+            method: "Acupuncture landing form",
+            message: `Message: ${form.current}`
+            
+          })
         },
         error => {
           setSuccessfulSubmission(false)
@@ -79,7 +86,7 @@ const Form = ({ landingPageType }) => {
       )
     typeof window !== "undefined" &&
       window.gtag("event", "generate_lead", {
-        send_to: "G-7S7VZRT31C",
+        send_to: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
         method: "Acupuncture landing form",
         // Sends the event to Google Analytics and
         // resubmits the form once the hit is done.
