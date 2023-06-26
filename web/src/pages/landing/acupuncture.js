@@ -138,7 +138,7 @@ become registered acupuncturists."
             </motion.p>
             <br />
             <motion.h4 variants={FadeIn}>
-              There&amp;s still time - apply today!
+              There&apos;s still time - apply today!
             </motion.h4>
           </LandingTextWrapper>
         </RightSection>
