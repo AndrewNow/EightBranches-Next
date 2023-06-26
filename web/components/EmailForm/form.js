@@ -28,6 +28,12 @@ const Form = ({ landingPageType }) => {
 
   const sendEmail = e => {
     e.preventDefault()
+    const firstName = e.target.first_name.value;
+    const lastName = e.target.last_name.value;
+    const name = `${firstName} ${lastName}`
+    const province = e.target.user_province.value;
+    const contactEmail = e.target.user_email.value;
+    const contactPhone = e.target.user_phone.value;
 
     // // https://developers.google.com/analytics/devguides/collection/gtagjs/sending-data
     // // Creates a timeout to call submitForm after one second.
@@ -71,20 +77,13 @@ const Form = ({ landingPageType }) => {
       .then(
         result => {
           setSuccessfulSubmission(true)
-          console.log(result.text)
-
           // Extract form data and construct a readable message
-          const formData = new FormData(form.current);
-          let message = "Form Data:\n";
-
-          for (const [name, value] of formData) {
-            message += `${name}: ${value}\n`;
-          }
-
+          console.log(result.text)
+          
           event("generate_lead", {
             category: "generate_lead",
             method: "Acupuncture landing form",
-            message: message,
+            message: `From ${name} in ${province}. Contact: ${contactEmail} - ${contactPhone}`,
             
           })
         },
@@ -93,14 +92,6 @@ const Form = ({ landingPageType }) => {
           console.log(error.text)
         }
       )
-    // typeof window !== "undefined" &&
-    //   window.gtag("event", "generate_lead", {
-    //     send_to: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
-    //     method: "Acupuncture landing form",
-    //     // Sends the event to Google Analytics and
-    //     // resubmits the form once the hit is done.
-    //     // event_callback: submitForm,
-    //   })
     // reset form after submission
     e.target.reset()
   }
