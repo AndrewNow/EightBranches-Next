@@ -150,7 +150,7 @@ become registered acupuncturists."
           </EmailFormWrapper>
           <FormSectionText>
             <h4>
-              Eight Branches Academy of Eastern Medicine is Toronto’s top
+              Eight Branches Academy of Eastern Medicine is Toronto&apos;s top
               Acupuncture School, offering students a comprehensive education
               with a firm foundation in Traditional Chinese Medicine. We are
               also the sister school of the Canadian College of Acupuncture and
