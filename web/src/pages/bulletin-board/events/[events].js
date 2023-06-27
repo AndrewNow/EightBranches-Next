@@ -9,6 +9,7 @@ import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
 import { getEventPage } from "lib/sanity/eventsQuery";
 import { getContactData } from "lib/sanity/contactInfoQuery";
+import Seo from "components/seo";
 
 const Event = ({ eventData }) => {
   let isoString;
@@ -56,6 +57,10 @@ const Event = ({ eventData }) => {
 
   return (
     <>
+      <Seo
+        title={eventData.title}
+        description={eventData.description}
+      />
       <BgColor>
         <SectionWrapper>
           <Article itemScope itemType="http://schema.org/Article">

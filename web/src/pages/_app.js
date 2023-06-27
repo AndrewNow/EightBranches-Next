@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }) {
   const pageKey = router.asPath
 
   // page transition info:
-  // https://maxschmitt.me/posts/nextjs-page-transitions-framer-motion
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0);

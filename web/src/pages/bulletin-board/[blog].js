@@ -1,5 +1,4 @@
 import client from "lib/sanity/client";
-import { blogPageQuery } from "lib/sanity/blogQuery";
 import groq from "groq";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
@@ -9,7 +8,9 @@ import Image from "next/image";
 import MarkdownContent from "utils/markdownContent";
 import FooterStamp from "svg/footerStamp";
 import { getBlogPage } from "lib/sanity/blogQuery";
+import Seo from "components/seo";
 import { getContactData } from "lib/sanity/contactInfoQuery";
+
 
 const Blog = ({ blogData }) => {
   let isoString;
@@ -50,7 +51,10 @@ const Blog = ({ blogData }) => {
 
   return (
     <>
-      {/* <Seo /> */}
+      <Seo
+        title={blogData.title}
+        description={blogData.description}
+      />
       <BgColor>
         <SectionWrapper>
           <Article itemScope itemType="http://schema.org/Article">

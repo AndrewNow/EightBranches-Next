@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import breakpoints from "components/breakpoints";
-// import Seo from "components/seo";
+import Seo from "components/seo";
 import Image from "next/image";
 import { client } from "lib/sanity/client";
 import { getEventsData } from "lib/sanity/eventsQuery";
@@ -21,9 +21,25 @@ const News = ({ eventData, blogData }) => {
   // When we reach the end of the array, load more posts button becomes a "close posts" button
   const handleClosePosts = () => setVisiblePosts(MORE_POSTS);
 
-  console.log(blogData)
   return (
     <>
+      <Seo
+        title="Upcoming Events & Blog"
+        description="See upcoming Workshops, Webinars and CEU opportunities at Eight Branches.
+Interested in hosting one? Contact us as well."
+        keywords={[
+          `Acupuncture learn online`,
+          `Acupuncture school online`,
+          `Acupuncture blog online`,
+          `learn TCM online`,
+          `chinese medicine blog`,
+          `learn TCM toronto`,
+          `Eight Branches bulletin board`,
+          `Eight Branches news`,
+          `Eight Branches updates`,
+          `Eight Branches events`,
+          `Eight Branches rsvp`,
+        ]}/>
       {eventData.length > 0 ? (
         <UpcomingEventsWrapper>
           <SectionWrapper>

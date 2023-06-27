@@ -237,6 +237,7 @@ workshop spaces."
                 quality={100}
                 className="facility-image"
                 height={555}
+                width={800}
               />
             </CardImage>
           </Card>
@@ -253,6 +254,7 @@ workshop spaces."
                 quality={100}
                 className="facility-image"
                 height={555}
+                width={800}
               />
             </CardImage>
             <CardText>
@@ -321,6 +323,7 @@ workshop spaces."
                 quality={100}
                 className="facility-image"
                 height={555}
+                width={800}
               />
             </CardImage>
           </Card>
