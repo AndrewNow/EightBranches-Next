@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import breakpoints from "../components/breakpoints";
 
-const NavLogo = React.forwardRef(({ onClick, href }, ref) => (
+const NavLogo = () => (
   // switch between logos depending on if browser is mobile or tablet.
   // this is because when using the logo with "college of eastern medicine", the text underneath "Eight Branches" becomes too small to read.
-  <a href={href} onClick={onClick} ref={ref}>
+  <>
     <Desktop
       width="266"
       height="109"
@@ -42,8 +42,8 @@ const NavLogo = React.forwardRef(({ onClick, href }, ref) => (
         fill="black"
       />
     </MobileTablet>
-  </a>
-));
+  </>
+);
 
 const Desktop = styled.svg`
   aspect-ratio: 266/109;
