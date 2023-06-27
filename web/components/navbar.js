@@ -134,6 +134,7 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
             color="black"
             aria-label="Nav menu hamburger button"
+            label="Nav menu hamburger button"
             role="button"
           />
         </IconWrapper>
