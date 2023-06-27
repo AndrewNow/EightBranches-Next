@@ -38,6 +38,7 @@ const EducationalExcellence = () => {
   const NextButton = ({ enabled, onClick }) => {
     return (
       <NextEmblaButton
+        aria-label="Next slide button"
         onClick={onClick}
         disabled={!enabled}
         whileHover={{ scale: 1.05 }}
@@ -60,6 +61,7 @@ const EducationalExcellence = () => {
   const PrevButton = ({ enabled, onClick }) => {
     return (
       <PrevEmblaButton
+        aria-label="Previous slide button"
         onClick={onClick}
         disabled={!enabled}
         whileHover={{ scale: 1.05 }}

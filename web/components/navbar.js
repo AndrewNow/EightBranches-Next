@@ -120,7 +120,7 @@ const Navbar = () => {
         key="header"
       >
         <LogoWrapper>
-          <Link aria-label="Home button" href="/" passHref legacyBehavior>
+          <Link aria-label="Home button" role="link" href="/">
             <NavLogo />
           </Link>
         </LogoWrapper>
@@ -134,6 +134,7 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
             color="black"
             aria-label="Nav menu hamburger button"
+            role="button"
           />
         </IconWrapper>
       </HeaderWrapper>
