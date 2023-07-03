@@ -139,7 +139,7 @@ are right for you."
           exit="hidden"
         >
           <Image
-            alt="Image of practitioners checking the tongue health of a student."
+            alt="Image of practitioners checking the wrist pulse of a student."
             quality={100}
             src={bannerImg}
             className='banner-image'
@@ -526,7 +526,6 @@ const Requirement = styled(motion.div)`
   text-align: center;
   border: 1px solid white;
   border-radius: 20px;
-  height: 200px;
   width: 35%;
   margin: 2.5rem 1.5rem;
   padding: 1rem;
