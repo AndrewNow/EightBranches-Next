@@ -44,17 +44,17 @@ export const FacultyMember = ({data}) => {
   //   }
   // }, [open]);
 
-    useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const bodyElement = document.body;
+  //   useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     const bodyElement = document.body;
 
-      if (open) {
-        bodyElement.style.overflow = "hidden";
-      } else {
-        bodyElement.style.overflow = "visible";
-      }
-    }
-  }, [open]);
+  //     if (open) {
+  //       bodyElement.style.overflow = "hidden";
+  //     } else {
+  //       bodyElement.style.overflow = "visible";
+  //     }
+  //   }
+  // }, [open]);
 
   const fadeIn = {
     hidden: {
@@ -343,6 +343,9 @@ const Modal = styled(motion.div)`
     max-height: none;
     overflow: scroll;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    height: auto;
+  }
 `
 
 const ModalImage = styled.div`
@@ -434,6 +437,7 @@ const ModalText = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    overflow-y: unset;
   }
 `
 
