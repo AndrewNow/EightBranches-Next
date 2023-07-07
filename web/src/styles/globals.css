@@ -56,6 +56,7 @@
 body {
   background-color: var(--color-beige);
   margin: 0;
+  position: relative;
   overscroll-behavior: none;
 }
 /* Heading */
