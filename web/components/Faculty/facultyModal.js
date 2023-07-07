@@ -121,6 +121,7 @@ const Wrapper = styled.div`
   /* overflow: scroll; */
   height: 95%;
   position: relative;
+  padding-bottom: 30vh;
 
   @media (max-width: ${breakpoints.l}px) {
     height: 100%;
