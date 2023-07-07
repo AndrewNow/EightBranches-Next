@@ -76,7 +76,7 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
                 {imageSrc ? (
                   <Image
                     className="modal-image"
-                    src={imageSrc} alt={title} width={790} height={580} placeholder='blur'
+                    src={imageSrc} alt={title} width={790} height={680} placeholder='blur'
                     style={{objectFit: "cover"}}
                     blurDataURL={lqip} />
                 ) : (
