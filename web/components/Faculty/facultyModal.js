@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import breakpoints from '../breakpoints'
+import StampLogo from "../../svg/stamplogo"
 
 const FacultyModal = ({ data, onClose, isModalOpen }) => {
   
