@@ -87,7 +87,6 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
                 <p>{role}</p>
                 <h3>{title}</h3>
                 <MarkdownContent blocks={bio} />
-                {/* <div dangerouslySetInnerHTML={{ __html: bio }} /> */}
                 {/* {email && (
                   <GetInTouch href={`mailto:${email}`}>
                     Get in touch
@@ -104,8 +103,6 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
 
 export default FacultyModal
 
-
-
 const GreyBg = styled(motion.div)`
   position: fixed;
   z-index: 99998;
@@ -121,14 +118,13 @@ const GreyBg = styled(motion.div)`
 `
 
 const ModalWrapper = styled.div`
-  /* overflow-y: default; */
   z-index: 99999;
   /* top: 10vh; */
   position: relative;
   /* height: 100%; */
   /* pointer-events: none; */
+  overflow-y: scroll;
   @media (max-width: ${breakpoints.m}px) {
-    /* overflow-y: scroll; */
   }
 `
 
@@ -161,7 +157,7 @@ const Modal = styled(motion.div)`
     max-width: 750px;
     height: 75vh;
     max-height: none;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 `
 
@@ -254,23 +250,9 @@ const ModalText = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    overflow-y: unset;
   }
 `
-
-// const GetInTouch = styled.a`
-//   display: inline-block;
-//   padding-top: 1rem;
-//   font-size: 18px;
-//   text-decoration: underline;
-//   color: var(--color-orange) !important;
-//   font-family: "Matter-light";
-//   @media (max-width: ${breakpoints.m}px) {
-//     display: flex;
-//     justify-content: center;
-//     padding-top: 2rem;
-//     margin: 0 auto;
-//   }
-// `
 
 const MobileCloseButton = styled.div`
   width: 100%;
@@ -295,3 +277,19 @@ const MobileCloseButton = styled.div`
     }
   }
 `
+
+
+// const GetInTouch = styled.a`
+//   display: inline-block;
+//   padding-top: 1rem;
+//   font-size: 18px;
+//   text-decoration: underline;
+//   color: var(--color-orange) !important;
+//   font-family: "Matter-light";
+//   @media (max-width: ${breakpoints.m}px) {
+//     display: flex;
+//     justify-content: center;
+//     padding-top: 2rem;
+//     margin: 0 auto;
+//   }
+// `
