@@ -236,8 +236,7 @@ workshop spaces."
                 alt="Images of traditional Chinese herbs and granules."
                 quality={100}
                 className="facility-image"
-                height={555}
-                width={800}
+                fill={true}
               />
             </CardImage>
           </Card>
@@ -253,8 +252,7 @@ workshop spaces."
                 alt="Images of a woman reading in our library, with a traditional Chinese scroll painting behind her."
                 quality={100}
                 className="facility-image"
-                height={555}
-                width={800}
+                fill={true}
               />
             </CardImage>
             <CardText>
@@ -322,8 +320,7 @@ workshop spaces."
                 alt="Images of traditional Chinese herbs and granules."
                 quality={100}
                 className="facility-image"
-                height={555}
-                width={800}
+                fill={true}
               />
             </CardImage>
           </Card>
