@@ -153,7 +153,8 @@ const Modal = styled(motion.div)`
     margin-bottom: 2.5rem;
     padding: 1rem;
     padding-bottom: 2.5rem;
-    flex-direction: column;
+    display: block;
+    /* flex-direction: column; */
     width: 93vw;
     max-width: 750px;
     height: auto;
