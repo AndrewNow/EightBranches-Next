@@ -178,6 +178,9 @@ const ModalImage = styled.div`
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
+    .modal-image {
+      max-height: 250px;
+    }
   }
 `
 const ModalFallback = styled.div`
