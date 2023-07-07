@@ -1,13 +1,41 @@
-import React from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import Seo from "/components/seo"
 import { getContactData } from "lib/sanity/contactInfoQuery"
-// import MapAlumniData from "/components/mapAlumniData"
 import breakpoints from "/components/breakpoints"
 import { getAlumniData } from "lib/sanity/alumniQuery"
-import { FacultyMember } from "components/Faculty/facultyCards"
+import { FacultyCard } from "components/Faculty/facultyCard"
+import FacultyModal from "components/Faculty/facultyModal"
 
 const Alumni = ({ alumniData }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAlumni, setSelectedAlumni] = useState(null);
+
+  const openAlumniModal = (facultyId) => {
+    setSelectedAlumni(facultyId);
+    setIsModalOpen(true);
+  };
+
+  const closeAlumniModal = () => {
+    setSelectedAlumni(null);
+    setIsModalOpen(false);
+  };
+
+  
+  useEffect(() => {
+    const bodyElement = document.body;
+    if (typeof document !== 'undefined') {}
+    if (isModalOpen) {
+      bodyElement.style.overflow = "hidden";
+    } else {
+      bodyElement.style.overflow = "auto";
+    }
+    return () => {
+      bodyElement.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
+
+
   return (
     <>
       <Seo
@@ -27,6 +55,13 @@ const Alumni = ({ alumniData }) => {
           `traditional chinese medicine mississauga`,
         ]}
       />
+      {selectedAlumni && (
+        <FacultyModal
+          data={alumniData.alumniData.find((member) => member.title === selectedAlumni)}
+          onClose={closeAlumniModal}
+          isModalOpen={isModalOpen}
+        />
+      )}
       <AlumniWrapper>
         <SectionWrapper>
           <AlumniHeader>
@@ -42,9 +77,13 @@ const Alumni = ({ alumniData }) => {
             </p>
           ) : (
               <AlumniGrid>
-                {alumniData.alumniData.map((alumni, i) => {
+                {alumniData.alumniData.map((alumni) => {
                   return (
-                    <FacultyMember data={alumni} key={`${alumni.lqip} + ${i}`} />
+                    <FacultyCard
+                      handler={() => openAlumniModal(alumni.title)}
+                      data={alumni}
+                      key={alumni.title}
+                    />
                   )
                 })}
               {/* <MapAlumniData /> */}

@@ -1,9 +1,10 @@
-import React from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import Seo from "/components/seo"
 import { getContactData } from "lib/sanity/contactInfoQuery"
 import breakpoints from "/components/breakpoints"
-import { FacultyMember } from "components/Faculty/facultyCards"
+import { FacultyCard } from "components/Faculty/facultyCard"
+import FacultyModal from "../../components/Faculty/facultyModal"
 import { getFacultyInstructorData, getFacultyLeadershipData } from "lib/sanity/facultyQuery"
 import Image from "next/image"
 import img1 from "../images/PartnershipLogos/8BClinic.png"
@@ -18,7 +19,42 @@ const OurFaculty = ({ facultyLeadershipData, facultyInstructorData }) => {
   const leadershipData = facultyLeadershipData.facultyLeadershipData
   const instructorData = facultyInstructorData.facultyInstructorData
 
-  // const siteTitle = data.site.siteMetadata?.title || `Our Alumni`
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedLeadership, setSelectedLeadership] = useState(null);
+  const [selectedInstructor, setSelectedInstructor] = useState(null);
+
+  const openLeadershipModal = (facultyId) => {
+    setSelectedLeadership(facultyId);
+    setIsModalOpen(true);
+  };
+  const openInstructorModal = (facultyId) => {
+    setSelectedInstructor(facultyId);
+    setIsModalOpen(true);
+  };
+
+  const closeLeadershipModal = () => {
+    setSelectedLeadership(null);
+    setIsModalOpen(false);
+  };
+  const closeInstructorModal = () => {
+    setSelectedInstructor(null);
+    setIsModalOpen(false);
+  };
+
+  
+  useEffect(() => {
+    const bodyElement = document.body;
+    if (typeof document !== 'undefined') {}
+    if (isModalOpen) {
+      bodyElement.style.overflow = "hidden";
+    } else {
+      bodyElement.style.overflow = "auto";
+    }
+    return () => {
+      bodyElement.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
+
   return (
     <>
       <Seo
@@ -38,6 +74,20 @@ const OurFaculty = ({ facultyLeadershipData, facultyInstructorData }) => {
           `traditional chinese medicine mississauga`,
         ]}
       />
+      {selectedLeadership && (
+        <FacultyModal
+          data={leadershipData.find((member) => member.title === selectedLeadership)}
+          onClose={closeLeadershipModal}
+          isModalOpen={isModalOpen}
+        />
+      )}
+      {selectedInstructor && (
+        <FacultyModal
+          data={instructorData.find((member) => member.title === selectedInstructor)}
+          onClose={closeInstructorModal}
+          isModalOpen={isModalOpen}
+        />
+      )}
       <FacultyWrapper>
         <SectionWrapper>
           <FacultyHeader>
@@ -56,11 +106,15 @@ const OurFaculty = ({ facultyLeadershipData, facultyInstructorData }) => {
           )
           : (
             <FacultyGrid>
-                {leadershipData.map((member, i) => {
+              {leadershipData.map((leadershipMember) => {
                 return (
-                  <FacultyMember data={member} key={`${member.lqip} + ${i}leadership`}/>
+                  <FacultyCard
+                    handler={() => openLeadershipModal(leadershipMember.title)}
+                    key={leadershipMember.title}
+                    data={leadershipMember}
+                    />
                   )
-                })}
+              })}
             </FacultyGrid>
             )
           }
@@ -72,9 +126,13 @@ const OurFaculty = ({ facultyLeadershipData, facultyInstructorData }) => {
           )
           : (
             <FacultyGrid>
-              {instructorData.map((member, i) => {
+              {instructorData.map((instructorMember) => {
                 return (
-                  <FacultyMember data={member} key={`${member.lqip} + ${i}leadership`} />
+                  <FacultyCard
+                    handler={() => openInstructorModal(instructorMember.title)}
+                    key={instructorMember.title}
+                    data={instructorMember}
+                  />
                   )
                 })}
             </FacultyGrid>
