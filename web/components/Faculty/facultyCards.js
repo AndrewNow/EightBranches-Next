@@ -19,19 +19,19 @@ export const FacultyMember = ({data}) => {
   const [open, setOpen] = useState(false)
 
   // lock scroll on background when Modal is open
-  const useLockBodyScroll = () => {
-    useEffect(() => {
-      if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-        const originalStyle = window.getComputedStyle(document.body).overflow
-        document.body.style.overflow = "hidden"
-        return () => (document.body.style.overflow = originalStyle)
-      }
-    }, [])
-  }
-  const ScrollLock = () => {
-    useLockBodyScroll()
-    return <></>
-  }
+  // const useLockBodyScroll = () => {
+  //   useEffect(() => {
+  //     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  //       const originalStyle = window.getComputedStyle(document.body).overflow
+  //       document.body.style.overflow = "hidden"
+  //       return () => (document.body.style.overflow = originalStyle)
+  //     }
+  //   }, [])
+  // }
+  // const ScrollLock = () => {
+  //   useLockBodyScroll()
+  //   return <></>
+  // }
 
 
   // useEffect(() => {
@@ -78,7 +78,7 @@ export const FacultyMember = ({data}) => {
 
   return (
     <>
-      {open && <ScrollLock />}
+      {/* {open && <ScrollLock />} */}
       <FacultyPost key={lqip} onClick={() => setOpen(!open)}>
         <PortraitThumbnail>
           {imageSrc ? (
@@ -289,14 +289,14 @@ const GreyBg = styled(motion.div)`
 `
 
 const ModalWrapper = styled.div`
-  overflow-y: default;
+  /* overflow-y: default; */
   z-index: 99999;
   /* top: 10vh; */
   position: relative;
   /* height: 100%; */
   /* pointer-events: none; */
   @media (max-width: ${breakpoints.m}px) {
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 `
 
