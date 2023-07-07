@@ -57,7 +57,6 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
           animate={isModalOpen ? "visible" : "hidden"}
           exit="hidden"
         >
-          <ModalWrapper>
             <MobileCloseButton>
               <p>Close</p>
               <GrClose
@@ -94,7 +93,6 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
                 )} */}
               </ModalText>
             </Modal>
-          </ModalWrapper>
         </GreyBg>
       )}
     </AnimatePresence>
@@ -115,17 +113,6 @@ const GreyBg = styled(motion.div)`
   left: 0;
   background-color: #00000035;
   backdrop-filter: blur(10px);
-`
-
-const ModalWrapper = styled.div`
-  z-index: 99999;
-  /* top: 10vh; */
-  position: relative;
-  /* height: 100%; */
-  /* pointer-events: none; */
-  /* overflow-y: scroll; */
-  @media (max-width: ${breakpoints.m}px) {
-  }
 `
 
 const Modal = styled(motion.div)`
