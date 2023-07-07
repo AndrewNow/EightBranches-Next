@@ -123,7 +123,7 @@ const ModalWrapper = styled.div`
   position: relative;
   /* height: 100%; */
   /* pointer-events: none; */
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   @media (max-width: ${breakpoints.m}px) {
   }
 `
@@ -250,7 +250,7 @@ const ModalText = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    overflow-y: unset;
+    /* overflow-y: unset; */
   }
 `
 
