@@ -119,7 +119,7 @@ const GreyBg = styled(motion.div)`
 const Wrapper = styled.div`
   padding-top: 10vh;
   /* overflow: scroll; */
-  height: 95%;
+  height: 95vh;
   position: relative;
 
   @media (max-width: ${breakpoints.l}px) {
@@ -180,6 +180,7 @@ const ModalImage = styled.div`
     border-radius: 5px;
   }
   @media (max-width: ${breakpoints.l}px) {
+    flex-basis: unset;
     width: 100%;
     .modal-image {
       aspect-ratio: 790/580;
