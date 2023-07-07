@@ -154,13 +154,10 @@ const Modal = styled(motion.div)`
     padding: 1rem;
     padding-bottom: 2.5rem;
     display: block;
-    /* flex-direction: column; */
     width: 93vw;
     max-width: 750px;
     height: auto;
     /* height: 75vh; */
-    /* max-height: none; */
-    /* overflow-y: scroll; */
   }
 `
 
@@ -175,6 +172,7 @@ const ModalImage = styled.div`
 
   .modal-image {
     width: 100%;
+    height: 100%;
     /* height: 100%; */
     object-fit: cover;
     border: 1px solid black;
