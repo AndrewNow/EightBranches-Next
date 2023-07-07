@@ -178,10 +178,6 @@ const ModalImage = styled.div`
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
-    .modal-image {
-      max-height: 450px;
-      aspect-ratio: 790/580;
-    }
   }
 `
 const ModalFallback = styled.div`
