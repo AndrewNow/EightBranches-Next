@@ -289,7 +289,9 @@ const GreyBg = styled(motion.div)`
 const ModalWrapper = styled.div`
   overflow-y: default;
   z-index: 99999;
-  top: 10vh;
+  /* top: 10vh; */
+  position: relative;
+  /* height: 100%; */
   /* pointer-events: none; */
   @media (max-width: ${breakpoints.m}px) {
     overflow-y: scroll;
