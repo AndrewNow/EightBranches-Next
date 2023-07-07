@@ -76,7 +76,9 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
                 {imageSrc ? (
                   <Image
                     className="modal-image"
-                    src={imageSrc} alt={title} width={790} height={580} placeholder='blur' blurDataURL={lqip} />
+                    src={imageSrc} alt={title} width={790} height={580} placeholder='blur'
+                    style={{objectFit: "cover"}}
+                    blurDataURL={lqip} />
                 ) : (
                   <ModalFallback>
                     <StampLogo />
@@ -171,7 +173,7 @@ const ModalImage = styled.div`
 
   .modal-image {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: cover;
     border: 1px solid black;
     border-radius: 5px;
@@ -179,7 +181,16 @@ const ModalImage = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
     .modal-image {
-      max-height: 250px;
+      aspect-ratio: 790/580;
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    .modal-image {
+      width: 100%;
+      aspect-ratio: 790/580;
+      height: auto;
     }
   }
 `
