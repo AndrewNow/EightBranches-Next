@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
@@ -19,17 +19,28 @@ export const FacultyMember = ({data}) => {
   const [open, setOpen] = useState(false)
 
   //lock scroll on background when Modal is open
-  const useLockBodyScroll = () => {
-    useLayoutEffect(() => {
-      const originalStyle = window.getComputedStyle(document.body).overflow
-      document.body.style.overflow = "hidden"
-      return () => (document.body.style.overflow = originalStyle)
-    }, [])
-  }
-  const ScrollLock = () => {
-    useLockBodyScroll()
-    return <></>
-  }
+  // const useLockBodyScroll = () => {
+  //   useEffect(() => {
+  //     const originalStyle = window.getComputedStyle(document.body).overflow
+  //     document.body.style.overflow = "hidden"
+  //     return () => (document.body.style.overflow = originalStyle)
+  //   }, [])
+  // }
+  // const ScrollLock = () => {
+  //   useLockBodyScroll()
+  //   return <></>
+  // }
+
+
+  useEffect(() => {
+    if (open && typeof window !== 'undefined' && typeof document !== 'undefined') {
+      const originalOverflow = window.getComputedStyle(document.documentElement).overflow;
+      document.documentElement.style.overflow = "hidden";
+      return () => {
+        document.documentElement.style.overflow = originalOverflow;
+      };
+    }
+  }, [open]);
 
   const fadeIn = {
     hidden: {
