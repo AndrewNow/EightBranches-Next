@@ -32,15 +32,15 @@ export const FacultyMember = ({data}) => {
   // }
 
 
-  useEffect(() => {
-    if (open && typeof window !== 'undefined' && typeof document !== 'undefined') {
-      const originalOverflow = window.getComputedStyle(document.documentElement).overflow;
-      document.documentElement.style.overflow = "hidden";
-      return () => {
-        document.documentElement.style.overflow = originalOverflow;
-      };
-    }
-  }, [open]);
+  // useEffect(() => {
+  //   if (open && typeof window !== 'undefined' && typeof document !== 'undefined') {
+  //     const originalOverflow = window.getComputedStyle(document.documentElement).overflow;
+  //     document.documentElement.style.overflow = "hidden";
+  //     return () => {
+  //       document.documentElement.style.overflow = originalOverflow;
+  //     };
+  //   }
+  // }, [open]);
 
   const fadeIn = {
     hidden: {
