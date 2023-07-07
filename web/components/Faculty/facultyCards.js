@@ -44,6 +44,18 @@ export const FacultyMember = ({data}) => {
   //   }
   // }, [open]);
 
+    useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const bodyElement = document.body;
+
+      if (open) {
+        bodyElement.style.overflow = "hidden";
+      } else {
+        bodyElement.style.overflow = "visible";
+      }
+    }
+  }, [open]);
+
   const fadeIn = {
     hidden: {
       y: 75,
