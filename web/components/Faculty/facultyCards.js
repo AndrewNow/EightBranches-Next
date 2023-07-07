@@ -18,18 +18,20 @@ export const FacultyMember = ({data}) => {
 
   const [open, setOpen] = useState(false)
 
-  //lock scroll on background when Modal is open
-  // const useLockBodyScroll = () => {
-  //   useEffect(() => {
-  //     const originalStyle = window.getComputedStyle(document.body).overflow
-  //     document.body.style.overflow = "hidden"
-  //     return () => (document.body.style.overflow = originalStyle)
-  //   }, [])
-  // }
-  // const ScrollLock = () => {
-  //   useLockBodyScroll()
-  //   return <></>
-  // }
+  // lock scroll on background when Modal is open
+  const useLockBodyScroll = () => {
+    useEffect(() => {
+      if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+        const originalStyle = window.getComputedStyle(document.body).overflow
+        document.body.style.overflow = "hidden"
+        return () => (document.body.style.overflow = originalStyle)
+      }
+    }, [])
+  }
+  const ScrollLock = () => {
+    useLockBodyScroll()
+    return <></>
+  }
 
 
   // useEffect(() => {
@@ -76,7 +78,7 @@ export const FacultyMember = ({data}) => {
 
   return (
     <>
-      {/* {open && <ScrollLock />} */}
+      {open && <ScrollLock />}
       <FacultyPost key={lqip} onClick={() => setOpen(!open)}>
         <PortraitThumbnail>
           {imageSrc ? (
