@@ -57,6 +57,7 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
           animate={isModalOpen ? "visible" : "hidden"}
           exit="hidden"
         >
+          <Wrapper>
             <MobileCloseButton>
               <p>Close</p>
               <GrClose
@@ -93,6 +94,7 @@ const FacultyModal = ({ data, onClose, isModalOpen }) => {
                 )} */}
               </ModalText>
             </Modal>
+          </Wrapper>
         </GreyBg>
       )}
     </AnimatePresence>
@@ -104,15 +106,24 @@ export default FacultyModal
 const GreyBg = styled(motion.div)`
   position: fixed;
   z-index: 99998;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   background-color: #00000035;
   backdrop-filter: blur(10px);
+`
+
+const Wrapper = styled.div`
+  padding-top: 10vh;
+  /* overflow: scroll; */
+  height: 95%;
+  position: relative;
+
+  @media (max-width: ${breakpoints.l}px) {
+    height: 100%;
+    overflow: scroll;
+  }
 `
 
 const Modal = styled(motion.div)`
@@ -123,14 +134,14 @@ const Modal = styled(motion.div)`
   margin: 0 auto;
   padding: 1.5rem;
   width: 85vw;
+  height: 90%;
   max-width: 1600px;
-  height: 70vh;
-  /* max-height: 70vh; */
+  /* height: 70vh; */
   border-radius: 5px;
   border: 1px solid black;
   background-color: var(--color-sandbeige);
   cursor: default;
-  pointer-events: none;
+  /* pointer-events: none; */
   a {
     pointer-events: auto;
   }
@@ -142,9 +153,10 @@ const Modal = styled(motion.div)`
     flex-direction: column;
     width: 93vw;
     max-width: 750px;
-    height: 75vh;
-    max-height: none;
-    overflow-y: scroll;
+    height: auto;
+    /* height: 75vh; */
+    /* max-height: none; */
+    /* overflow-y: scroll; */
   }
 `
 
@@ -194,7 +206,6 @@ const ModalFallback = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     min-height: 100%;
     height: 200px;
-
     svg {
       transform: scale(0.6);
     }
@@ -230,21 +241,18 @@ const ModalText = styled.div`
     margin-top: 1rem;
     padding-left: 0;
     padding-right: 0;
-    overflow-y: visible;
+    overflow-y: unset;
     a,
     p {
       font-size: 16px;
     }
   }
-  @media (max-width: ${breakpoints.s}px) {
-    /* overflow-y: unset; */
-  }
 `
 
 const MobileCloseButton = styled.div`
   width: 100%;
+  height: 10%;
   margin: 0 auto;
-  margin-top: 10vh;
   display: inline-flex;
   justify-content: center;
   align-items: center;
