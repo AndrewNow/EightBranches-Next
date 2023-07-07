@@ -43,16 +43,17 @@ const OurFaculty = ({ facultyLeadershipData, facultyInstructorData }) => {
 
   
   useEffect(() => {
-    const bodyElement = document.body;
-    if (typeof document !== 'undefined') {}
-    if (isModalOpen) {
-      bodyElement.style.overflow = "hidden";
-    } else {
-      bodyElement.style.overflow = "auto";
+    if (typeof document !== "undefined") {
+      const bodyElement = document.body;
+      if (isModalOpen) {
+        bodyElement.style.overflow = "hidden";
+      } else {
+        bodyElement.style.overflow = "auto";
+      }
+      return () => {
+        bodyElement.style.overflow = "auto";
+      };
     }
-    return () => {
-      bodyElement.style.overflow = "auto";
-    };
   }, [isModalOpen]);
 
   return (
