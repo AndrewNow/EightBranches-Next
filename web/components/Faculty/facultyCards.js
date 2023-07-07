@@ -76,7 +76,7 @@ export const FacultyMember = ({data}) => {
 
   return (
     <>
-      {open && <ScrollLock />}
+      {/* {open && <ScrollLock />} */}
       <FacultyPost key={lqip} onClick={() => setOpen(!open)}>
         <PortraitThumbnail>
           {imageSrc ? (
