@@ -3,6 +3,8 @@ import Layout from "components/layout";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from 'next/router';
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import { useEffect } from "react";
+import TagManager from 'react-gtm-module';
 
 export default function App({ Component, pageProps }) {
 
@@ -16,6 +18,9 @@ export default function App({ Component, pageProps }) {
     }
   };
 
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-MDFX6XJ' });
+  }, []);
 
   return (
     <>
