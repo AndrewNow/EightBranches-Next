@@ -30,7 +30,6 @@ export default {
       title: "Date of Event",
       description: "Leave blank for TBD.",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "host",
@@ -51,6 +50,7 @@ export default {
       name: "body",
       title: "Event description",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {
