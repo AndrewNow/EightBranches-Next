@@ -14,7 +14,7 @@ const AcupunctureMoxibustion = () => {
     image: (
       <Image
         src={image}
-        alt="Image of a student practicing acupuncture on a patient's upper foot region."
+        alt="Image of a student gently practicing acupuncture on a patient's upper foot region."
         quality={100}
         className="banner-image"
         width={942}
