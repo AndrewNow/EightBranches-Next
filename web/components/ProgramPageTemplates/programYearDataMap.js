@@ -40,6 +40,8 @@ const ProgramYearDataMap = ({ term, index }) => {
     0
   )
 
+
+
   return (
     <>
       <Header
@@ -109,6 +111,12 @@ const ProgramYearDataMap = ({ term, index }) => {
                   <li>EMA-4022 Eastern Bodywork: Acupressure II</li>
                   <li>EMA-4032 Eastern Bodywork: Tui Na II</li>
                 </ul>
+              </AdditionalInfo>
+            )}
+            {term.hasCoursesOnlyAvailableInUSA === true && (
+              <AdditionalInfo variants={expandAnimation}>
+                {" "}
+                ** Program only available in the US.
               </AdditionalInfo>
             )}
             <motion.h6 variants={expandAnimation}>

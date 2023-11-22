@@ -4,7 +4,7 @@ import ProgramLayout from "components/ProgramPageTemplates/programLayout"
 import image from '../../../images/Programs/programs-split-hybrid.png'
 import { getContactData } from "lib/sanity/contactInfoQuery"
 
-const AcupunctureMoxibustion = () => {
+const OnsiteAcupuncture = () => {
 
   const programData = {
     programName: "Split-Hybrid Acupuncture & Moxibustion",
@@ -48,6 +48,7 @@ const AcupunctureMoxibustion = () => {
               {
                 label: "Term 1",
                 hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
                     code: "TCM-1001",
@@ -83,6 +84,8 @@ const AcupunctureMoxibustion = () => {
               },
               {
                 label: "Term 2",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
                     code: "ACU-2001",
@@ -124,6 +127,7 @@ const AcupunctureMoxibustion = () => {
               {
                 label: "Term 3",
                 hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
                     code: "TCM-1002",
@@ -164,6 +168,8 @@ const AcupunctureMoxibustion = () => {
             data: [
               {
                 label: "Term 1",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
                     code: "TCM-1004",
@@ -199,6 +205,8 @@ const AcupunctureMoxibustion = () => {
               },
               {
                 label: "Term 2",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
                     code: "ACT-3001",
@@ -245,6 +253,8 @@ const AcupunctureMoxibustion = () => {
             data: [
               {
                 label: "Term 1A",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: true,
                 courses: [
                   {
                     code: "ACU-2006",
@@ -260,13 +270,13 @@ const AcupunctureMoxibustion = () => {
                   },
                   {
                     code: "ACU-2009",
-                    title: "Japanese Acupuncture & Moxibustion",
+                    title: "Japanese Acupuncture & Moxibustion **",
                     type: "Practical",
                     credits: 3,
                   },
                   {
                     code: "EMA-4000",
-                    title: "Eastern Bodywork",
+                    title: "Eastern Bodywork **",
                     type: "Practical",
                     credits: 3,
                   },
@@ -292,6 +302,8 @@ const AcupunctureMoxibustion = () => {
               },
               {
                 label: "Term 1B",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
                     code: "ACU-2005",
@@ -309,16 +321,18 @@ const AcupunctureMoxibustion = () => {
               },
               {
                 label: "Term 2",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: true,
                 courses: [
                   {
                     code: "ACU-2010",
-                    title: "Korean Acupuncture",
+                    title: "Korean Acupuncture **",
                     type: "Practical",
                     credits: 3,
                   },
                   {
                     code: "BIO-5012",
-                    title: "Microbiology",
+                    title: "Microbiology **",
                     type: "Lecture",
                     credits: 3,
                   },
@@ -336,7 +350,7 @@ const AcupunctureMoxibustion = () => {
                   },
                   {
                     code: "CLC-9003",
-                    title: "Clinical Residency (188 hours)",
+                    title: "Clinical Residency (188 hours) **",
                     type: "Clinical",
                     credits: 4,
                   },
@@ -361,7 +375,7 @@ become registered acupuncturists."
   )
 }
 
-export default AcupunctureMoxibustion
+export default OnsiteAcupuncture
 
 export async function getStaticProps() {
   const contactInfo = await getContactData()
