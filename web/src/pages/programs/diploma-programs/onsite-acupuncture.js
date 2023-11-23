@@ -10,11 +10,11 @@ const OnsiteAcupuncture = () => {
     programName: "Split-Hybrid Acupuncture & Moxibustion",
     programType: "Diploma Program",
     about:
-      "This program can be completed in 2 years (with Clinical course hours taking place throughout each year & during additional summer terms) or in 3 years (with all Clinical hours taking place during the third year). Our program is hybrid delivery, which includes both online and on-site study formats. In addition to acupuncture, the curriculum includes training in moxibustion, nutrition, herbology, eastern massage, cupping, gua sha, and the taoist arts.",
+      "This program can be completed in 2 or 3 years. Our program includes both lecture and practical course formats. In addition to acupuncture, the curriculum includes training in moxibustion, nutrition, herbology, eastern massage, cupping, gua sha, and the taoist arts.",
     image: (
       <Image
         src={image}
-        alt="Image of a student gently practicing acupuncture on a patient's upper foot region."
+        alt="Image of two practitioners performing on a patient."
         quality={100}
         className="banner-image"
         width={942}
@@ -25,13 +25,13 @@ const OnsiteAcupuncture = () => {
     programDescription: {
       optionOne: {
         title: "2 Year Program",
-        hours: "Program Hours: 2268 (includes 668 clinical hours)",
+        hours: "Program Hours: 2412 (includes 716 clinical hours)",
         description:
           "This program can be completed in 2 years of studying full-time, with multiple intakes per year.",
       },
       optionTwo: {
         title: "3 Year Program",
-        hours: "Program Hours: 2268 (includes 668 clinical hours)",
+        hours: "Program Hours: 2412 (includes 716 clinical hours)",
         description:
           "This program can be completed in 3 years, with all clinical hours taking place in the senior year.",
       },
@@ -253,7 +253,7 @@ const OnsiteAcupuncture = () => {
             data: [
               {
                 label: "Term 1A",
-                hasEasternBodywork: false,
+                hasEasternBodywork: true,
                 hasCoursesOnlyAvailableInUSA: true,
                 courses: [
                   {
@@ -276,7 +276,7 @@ const OnsiteAcupuncture = () => {
                   },
                   {
                     code: "EMA-4000",
-                    title: "Eastern Bodywork **",
+                    title: "Eastern Bodywork * **",
                     type: "Practical",
                     credits: 3,
                   },
