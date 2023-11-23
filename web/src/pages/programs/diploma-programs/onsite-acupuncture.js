@@ -367,8 +367,7 @@ const OnsiteAcupuncture = () => {
     <>
       <Seo
         title="Split-Hybrid Acupuncture & Moxibustion Diploma Program"
-        description="Our 2 year and 3 year acupuncture diploma program trains students to
-become registered acupuncturists."
+        description="Our 2 year and 3 year split-hybrid acupuncture & moxibustion curriculum includes training in moxibustion, nutrition, herbology, eastern massage, cupping, gua sha, and the taoist arts."
       />
       <ProgramLayout programData={programData} />
     </>
