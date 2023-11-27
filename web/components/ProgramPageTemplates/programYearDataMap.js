@@ -116,7 +116,7 @@ const ProgramYearDataMap = ({ term, index }) => {
             {term.hasCoursesOnlyAvailableInUSA === true && (
               <AdditionalInfo variants={expandAnimation}>
                 {" "}
-                ** Program only available in the US.
+                ** Courses only available in the USA program.
               </AdditionalInfo>
             )}
             <motion.h6 variants={expandAnimation}>

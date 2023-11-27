@@ -82,6 +82,11 @@ const ProgramLayout = ({ programData }) => {
               <p>
                 {ProgramDescription.optionOne.hours}
                 <br />
+                {ProgramDescription.optionOne.secondaryHours && 
+                  <>
+                    {ProgramDescription.optionOne.secondaryHours} <br />
+                  </>
+                }
                 {ProgramDescription.optionOne.description}
               </p>
               <styles.DividingLine />
@@ -92,6 +97,11 @@ const ProgramLayout = ({ programData }) => {
                 <p>
                   {ProgramDescription.optionTwo.hours}
                   <br />
+                  {ProgramDescription.optionTwo.secondaryHours && 
+                  <>
+                    {ProgramDescription.optionTwo.secondaryHours} <br />
+                  </>
+                }
                   {ProgramDescription.optionTwo.description}
                 </p>
                 <styles.DividingLine />

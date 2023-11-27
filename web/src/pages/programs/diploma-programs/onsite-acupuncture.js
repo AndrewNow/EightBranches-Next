@@ -25,13 +25,15 @@ const OnsiteAcupuncture = () => {
     programDescription: {
       optionOne: {
         title: "2 Year Program",
-        hours: "Program Hours: 2412 (includes 716 clinical hours)",
+        hours: "CAN Program Hours: 2004 (includes 500 clinical hours)",
+        secondaryHours: "USA Program Hours: 2412 (includes 716 clinical hours)",
         description:
           "This program can be completed in 2 years of studying full-time, with multiple intakes per year.",
       },
       optionTwo: {
         title: "3 Year Program",
-        hours: "Program Hours: 2412 (includes 716 clinical hours)",
+        hours: "CAN Program Hours: 2004 (includes 500 clinical hours)",
+        secondaryHours: "USA Program Hours: 2412 (includes 716 clinical hours)",
         description:
           "This program can be completed in 3 years, with all clinical hours taking place in the senior year.",
       },
@@ -48,7 +50,7 @@ const OnsiteAcupuncture = () => {
               {
                 label: "Term 1",
                 hasEasternBodywork: false,
-                hasCoursesOnlyAvailableInUSA: false,
+                hasCoursesOnlyAvailableInUSA: true,
                 courses: [
                   {
                     code: "TCM-1001",
@@ -58,7 +60,7 @@ const OnsiteAcupuncture = () => {
                   },
                   {
                     code: "SHA-6001",
-                    title: "Self-Healing Arts",
+                    title: "Self-Healing Arts **",
                     type: "Practical",
                     credits: 3,
                   },
@@ -338,7 +340,7 @@ const OnsiteAcupuncture = () => {
                   },
                   {
                     code: "BIO-5013",
-                    title: "Western Pathology Case Studies",
+                    title: "Western Pathology Case Studies **",
                     type: "Lecture",
                     credits: 3,
                   },
