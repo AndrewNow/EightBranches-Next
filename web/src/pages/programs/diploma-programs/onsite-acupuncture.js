@@ -7,7 +7,7 @@ import { getContactData } from "lib/sanity/contactInfoQuery"
 const OnsiteAcupuncture = () => {
 
   const programData = {
-    programName: "Split-Hybrid Acupuncture & Moxibustion",
+    programName: "Onsite Acupuncture & Moxibustion",
     programType: "Diploma Program",
     about:
       "This program can be completed in 2 or 3 years. Our program includes both lecture and practical course formats. In addition to acupuncture, the curriculum includes training in moxibustion, nutrition, herbology, eastern massage, cupping, gua sha, and the taoist arts.",
@@ -26,14 +26,14 @@ const OnsiteAcupuncture = () => {
       optionOne: {
         title: "2 Year Program",
         hours: "CAN Program Hours: 2004 (includes 500 clinical hours)",
-        secondaryHours: "USA Program Hours: 2412 (includes 716 clinical hours)",
+        secondaryHours: "USA Program Hours: 2412 (includes 668 clinical hours)",
         description:
           "This program can be completed in 2 years of studying full-time, with multiple intakes per year.",
       },
       optionTwo: {
         title: "3 Year Program",
         hours: "CAN Program Hours: 2004 (includes 500 clinical hours)",
-        secondaryHours: "USA Program Hours: 2412 (includes 716 clinical hours)",
+        secondaryHours: "USA Program Hours: 2412 (includes 668 clinical hours)",
         description:
           "This program can be completed in 3 years, with all clinical hours taking place in the senior year.",
       },
@@ -368,8 +368,8 @@ const OnsiteAcupuncture = () => {
   return (
     <>
       <Seo
-        title="Split-Hybrid Acupuncture & Moxibustion Diploma Program"
-        description="Our 2 year and 3 year split-hybrid acupuncture & moxibustion curriculum includes training in moxibustion, nutrition, herbology, eastern massage, cupping, gua sha, and the taoist arts."
+        title="Onsite Acupuncture & Moxibustion Diploma Program"
+        description="Our 2 year and 3 year onsite acupuncture & moxibustion curriculum includes training in moxibustion, nutrition, herbology, eastern massage, cupping, gua sha, and the taoist arts."
       />
       <ProgramLayout programData={programData} />
     </>
