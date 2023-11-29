@@ -380,7 +380,6 @@ export default OnsiteAcupuncture
 
 export async function getStaticProps() {
   const contactInfo = await getContactData()
-
   return {
     props: {
       contactInfo,
