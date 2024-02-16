@@ -25,13 +25,15 @@ const AcupunctureMoxibustion = () => {
     programDescription: {
       optionOne: {
         title: "2 Year Program",
-        hours: "Program Hours: 2268 (includes 668 clinical hours)",
+        hours: "CAN Program Hours: 2004 (includes 500 clinical hours)",
+        secondaryHours: "USA Program Hours: 2412 (includes 668 clinical hours)",
         description:
           "This program can be completed in 2 years of studying full-time, with multiple intakes per year.",
       },
       optionTwo: {
         title: "3 Year Program",
-        hours: "Program Hours: 2268 (includes 668 clinical hours)",
+        hours: "CAN Program Hours: 2004 (includes 500 clinical hours)",
+        secondaryHours: "USA Program Hours: 2412 (includes 668 clinical hours)",
         description:
           "This program can be completed in 3 years, with all clinical hours taking place in the senior year.",
       },
@@ -40,312 +42,6 @@ const AcupunctureMoxibustion = () => {
     },
     courseData: [
       {
-        label: "2 Year Program",
-        year: [
-          {
-            label: "Year One",
-            data: [
-              {
-                label: "Term 1",
-                hasEasternBodywork: true,
-                courses: [
-                  {
-                    code: "EMA-40XX",
-                    title: "Eastern Bodywork I*",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "SHA-6001",
-                    title: "Self Healing Arts",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1005",
-                    title: "TCM History, Pinyin, Chinese Language, etc.",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "PRO-7001",
-                    title:
-                      "Interpersonal Skills, Practice Management, Professionalism",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1001",
-                    title: "Foundation of Traditional Chinese Medicine (A)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9000",
-                    title: "Clinical Observation (68 hours)",
-                    type: "Clinical",
-                    credits: 4,
-                  },
-                ],
-              },
-              {
-                label: "Term 2",
-                courses: [
-                  {
-                    code: "ACU-2008",
-                    title:
-                      "Acupuncturist Safety, Jurisprudence, Regulation, Intro to Clinic",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2002",
-                    title: "Acupuncture Points Theory (A)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2001",
-                    title: "Meridian Theory",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5001",
-                    title: "Anatomy I",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2005",
-                    title: "Acupuncture Allied Therapies",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9001",
-                    title: "Clinical Internship A (50 hours)",
-                    type: "Clinical",
-                    credits: 3,
-                  },
-                ],
-              },
-              {
-                label: "Term 3",
-                hasEasternBodywork: true,
-                courses: [
-                  {
-                    code: "BIO-5002",
-                    title: "Physiology",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1002",
-                    title: "Foundation of Traditional Chinese Medicine (B)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2006",
-                    title: "Acupuncture Techniques (A)",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5011",
-                    title: "Anatomy II",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "EMA-40XX",
-                    title: "Eastern Bodywork II*",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1003",
-                    title: "Diagnostics of Traditional Chinese Medicine (A)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9002",
-                    title: "Clinical Internship A (50 hours)",
-                    type: "Clinical",
-                    credits: 3,
-                  },
-                ],
-              },
-              {
-                label: "Summer Term",
-                courses: [
-                  {
-                    code: "CLC-9002",
-                    title: "Clinical Internship B (200 hours)",
-                    type: "Clinical",
-                    credits: 12,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            label: "Year Two",
-            data: [
-              {
-                label: "Term 1",
-                courses: [
-                  {
-                    code: "ACU-2003",
-                    title: "Acupuncture Points Theory (B)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACT-3005",
-                    title: "Acupuncture Therapeutics",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "EMA-4003",
-                    title: "Tui Na",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1004",
-                    title: "Diagnostics of Traditional Chinese Medicine (B)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5003",
-                    title: "Pathology",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9002",
-                    title: "Clinical Internship (50 Hours)",
-                    type: "Clinical",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9021",
-                    title: "Residency (50 Hours)",
-                    type: "Clinical",
-                    credits: 3,
-                  },
-                ],
-              },
-              {
-                label: "Term 2",
-                courses: [
-                  {
-                    code: "ACU-2004",
-                    title: "Acupuncture Points Theory (C)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2007",
-                    title: "Acupuncture Techniques (B)",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5004",
-                    title: "Pharmacology",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "HRB-8002",
-                    title: "Introduction to TCM Herbology and Formula",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACT-3001",
-                    title: "Acupuncture Internal Medicine",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACT-3003",
-                    title: "Acupuncture External Medicine and Misc.",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9021",
-                    title: "Residency (100 Hours)",
-                    type: "Clinical",
-                    credits: 6,
-                  },
-                ],
-              },
-              {
-                label: "Term 3",
-                courses: [
-                  {
-                    code: "ACT-3002",
-                    title: "Acupuncture Gynecology & Pediatric Diseases",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACT-3004",
-                    title:
-                      "Acupuncture Orthopedics, Sports Medicine, Traumatology",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5005",
-                    title: "Neuroanatomy & Emergency Medicine",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5006",
-                    title: "Western Medical Diagnostics & Examination",
-                    type: "Lecture/Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "HRB-8001",
-                    title: "TCM Nutrition",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "CLC-9021",
-                    title: "Residency (100 Hours)",
-                    type: "Clinical",
-                    credits: 6,
-                  },
-                ],
-              },
-              {
-                label: "Summer Term",
-                courses: [
-                  {
-                    code: "PRO-7005",
-                    title: "Exam Preparation, Career Planning",
-                    type: "Preperatory",
-                    credits: 4,
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
         label: "3 Year Program",
         year: [
           {
@@ -353,36 +49,36 @@ const AcupunctureMoxibustion = () => {
             data: [
               {
                 label: "Term 1",
-                hasEasternBodywork: true,
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: true,
                 courses: [
                   {
-                    code: "EMA-40XX",
-                    title: "Eastern Bodywork I*",
-                    type: "Practical",
+                    code: "TCM-1001",
+                    title: "Foundation of TCM (A)",
+                    type: "Lecture",
                     credits: 3,
                   },
                   {
                     code: "SHA-6001",
-                    title: "Self Healing Arts",
+                    title: "Self-Healing Arts **",
                     type: "Practical",
                     credits: 3,
                   },
                   {
-                    code: "TCM-1005",
-                    title: "TCM History, Pinyin, Chinese Language, etc.",
+                    code: "ACU-2002",
+                    title: "Acupuncture Points Theory (A)",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
+                    code: "BIO-5001",
+                    title: "Anatomy",
                     type: "Lecture",
                     credits: 3,
                   },
                   {
                     code: "PRO-7001",
-                    title:
-                      "Interpersonal Skills, Practice Management, Professionalism",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1001",
-                    title: "Foundation of Traditional Chinese Medicine (A)",
+                    title: "Practice Management & Professionalism",
                     type: "Lecture",
                     credits: 3,
                   },
@@ -390,44 +86,69 @@ const AcupunctureMoxibustion = () => {
               },
               {
                 label: "Term 2",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
+                  {
+                    code: "ACU-2001",
+                    title:
+                      "Meridian Theory",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "ACU-2003",
+                    title:
+                      "Acupuncture Points Theory (B)",
+                    type: "Practical",
+                    credits: 3,
+                  },
                   {
                     code: "ACU-2008",
                     title:
-                      "Acupuncturist Safety, Jurisprudence, Regulation, Intro to Clinic",
+                      "Acupuncture Safety & Jurisprudence",
                     type: "Lecture",
                     credits: 3,
                   },
                   {
-                    code: "ACU-2002",
-                    title: "Acupuncture Points Theory (A)",
+                    code: "BIO-5011",
+                    title:
+                      "Anatomy II",
                     type: "Lecture",
                     credits: 3,
                   },
                   {
-                    code: "ACU-2001",
-                    title: "Meridian Theory",
+                    code: "HRB-8001",
+                    title:
+                      "TCM Nutrition",
                     type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5001",
-                    title: "Anatomy I",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2005",
-                    title: "Acupuncture Allied Therapies",
-                    type: "Practical",
                     credits: 3,
                   },
                 ],
               },
               {
                 label: "Term 3",
-                hasEasternBodywork: true,
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
+                  {
+                    code: "TCM-1002",
+                    title: "Foundation of TCM (B)",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "TCM-1003",
+                    title: "Diagnostics of TCM (A)",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "ACU-2004",
+                    title: "Acupuncture Points Theory (C)",
+                    type: "Practical",
+                    credits: 3,
+                  },
                   {
                     code: "BIO-5002",
                     title: "Physiology",
@@ -435,32 +156,8 @@ const AcupunctureMoxibustion = () => {
                     credits: 3,
                   },
                   {
-                    code: "TCM-1002",
-                    title: "Foundation of Traditional Chinese Medicine (B)",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACU-2006",
-                    title: "Acupuncture Techniques (A)",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5011",
-                    title: "Anatomy II",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "EMA-40XX",
-                    title: "Eastern Bodywork II*",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1003",
-                    title: "Diagnostics of Traditional Chinese Medicine (A)",
+                    code: "HRB-8002",
+                    title: "Introduction to TCM Herbology",
                     type: "Lecture",
                     credits: 3,
                   },
@@ -473,10 +170,18 @@ const AcupunctureMoxibustion = () => {
             data: [
               {
                 label: "Term 1",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
-                    code: "ACU-2003",
-                    title: "Acupuncture Points Theory (B)",
+                    code: "TCM-1004",
+                    title: "Diagnostics of TCM (B)",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "ACT-3004",
+                    title: "Acupuncture Orthopedics & Traumatology",
                     type: "Lecture",
                     credits: 3,
                   },
@@ -487,20 +192,14 @@ const AcupunctureMoxibustion = () => {
                     credits: 3,
                   },
                   {
-                    code: "EMA-4003",
-                    title: "Tui Na",
-                    type: "Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "TCM-1004",
-                    title: "Diagnostics of Traditional Chinese Medicine (B)",
+                    code: "BIO-5003",
+                    title: "Pathology",
                     type: "Lecture",
                     credits: 3,
                   },
                   {
-                    code: "BIO-5003",
-                    title: "Pathology",
+                    code: "BIO-5005",
+                    title: "Neuroanatomy",
                     type: "Lecture",
                     credits: 3,
                   },
@@ -508,17 +207,25 @@ const AcupunctureMoxibustion = () => {
               },
               {
                 label: "Term 2",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
                 courses: [
                   {
-                    code: "ACU-2004",
-                    title: "Acupuncture Points Theory (C)",
+                    code: "ACT-3001",
+                    title: "Acupuncture Internal Medicine",
                     type: "Lecture",
                     credits: 3,
                   },
                   {
-                    code: "ACU-2007",
-                    title: "Acupuncture Techniques (B)",
-                    type: "Practical",
+                    code: "ACT-3002",
+                    title: "Acupuncture Pediatrics & Gynaecology",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "ACT-3003",
+                    title: "Acupuncture External Medicine & Misc.",
+                    type: "Lecture",
                     credits: 3,
                   },
                   {
@@ -528,68 +235,15 @@ const AcupunctureMoxibustion = () => {
                     credits: 3,
                   },
                   {
-                    code: "HRB-8002",
-                    title: "Introduction to TCM Herbology and Formula",
+                    code: "BIO-5015",
+                    title: "Western Clinical & Emergency Medicine",
                     type: "Lecture",
                     credits: 3,
                   },
                   {
-                    code: "ACT-3001",
-                    title: "Acupuncture Internal Medicine",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACT-3003",
-                    title: "Acupuncture External Medicine and Misc.",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                ],
-              },
-              {
-                label: "Term 3",
-                courses: [
-                  {
-                    code: "ACT-3002",
-                    title: "Acupuncture Gynecology & Pediatric Diseases",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "ACT-3004",
-                    title:
-                      "Acupuncture Orthopedics, Sports Medicine, Traumatology",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5005",
-                    title: "Neuroanatomy & Emergency Medicine",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                  {
-                    code: "BIO-5006",
-                    title: "Western Medical Diagnostics & Examination",
-                    type: "Lecture/Practical",
-                    credits: 3,
-                  },
-                  {
-                    code: "HRB-8001",
-                    title: "TCM Nutrition",
-                    type: "Lecture",
-                    credits: 3,
-                  },
-                ],
-              },
-              {
-                label: "Summer Term",
-                courses: [
-                  {
-                    code: "PRO-7005",
-                    title: "Exam Preparation, Career Planning",
-                    type: "Preperatory",
+                    code: "EMA-4031",
+                    title: "Tui Na",
+                    type: "Practical",
                     credits: 3,
                   },
                 ],
@@ -600,31 +254,107 @@ const AcupunctureMoxibustion = () => {
             label: "Year Three",
             data: [
               {
-                label: "Clinical Experience",
+                label: "Term 1A",
+                hasEasternBodywork: true,
+                hasCoursesOnlyAvailableInUSA: true,
                 courses: [
                   {
+                    code: "ACU-2006",
+                    title: "Acupuncture Techniques (A)",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
+                    code: "ACU-2007",
+                    title: "Acupuncture Techniques (B)",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
+                    code: "ACU-2009",
+                    title: "Japanese Acupuncture & Moxibustion **",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
+                    code: "EMA-4000",
+                    title: "Eastern Bodywork * **",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
+                    code: "BIO-5006",
+                    title: "Western Medical Diagnostics & Examinations",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
                     code: "CLC-9000",
-                    title: "Clinical Observation (68 Hours)",
+                    title: "Clinical Introduction (48 hours)",
                     type: "Clinical",
-                    credits: 4,
+                    credits: 3,
                   },
                   {
                     code: "CLC-9001",
-                    title: "Clinical Internship A (100 Hours)",
+                    title: "Clinical Assistance (200 hours)",
                     type: "Clinical",
-                    credits: 6,
+                    credits: 4,
+                  },
+                ],
+              },
+              {
+                label: "Term 1B",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: false,
+                courses: [
+                  {
+                    code: "ACU-2005",
+                    title: "Acupuncture Allied Therapies",
+                    type: "Practical",
+                    credits: 3,
                   },
                   {
                     code: "CLC-9002",
-                    title: "Clinical Internship A (250 Hours)",
+                    title: "Clinical Practice (280 hours)",
                     type: "Clinical",
-                    credits: 16,
+                    credits: 6,
+                  },
+                ],
+              },
+              {
+                label: "Term 2",
+                hasEasternBodywork: false,
+                hasCoursesOnlyAvailableInUSA: true,
+                courses: [
+                  {
+                    code: "ACU-2010",
+                    title: "Korean Acupuncture **",
+                    type: "Practical",
+                    credits: 3,
                   },
                   {
-                    code: "CLC-9021",
-                    title: "Acupuncture Residency (250 Hours)",
+                    code: "BIO-5012",
+                    title: "Microbiology **",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "BIO-5013",
+                    title: "Western Pathology Case Studies **",
+                    type: "Lecture",
+                    credits: 3,
+                  },
+                  {
+                    code: "PRO-7005",
+                    title: "Exam Preparation (16 hours)",
+                    type: "Practical",
+                    credits: 3,
+                  },
+                  {
+                    code: "CLC-9003",
+                    title: "Clinical Residency (188 hours) **",
                     type: "Clinical",
-                    credits: 16,
+                    credits: 4,
                   },
                 ],
               },
