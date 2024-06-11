@@ -27,7 +27,7 @@ const AdvancedTCMP = () => {
         title: "1 Year Program",
         hours: "Program Hours: 970 (includes 250 clinical hours)",
         description:
-          "This program can be completed in 2 years studying full-time.",
+          "This program can be completed in 1 year studying full-time.",
       },
       additionalInfo:
         "This program can be taken fully online with additional on-site components for specialization accreditations.",
